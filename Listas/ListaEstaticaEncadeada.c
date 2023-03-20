@@ -6,6 +6,7 @@ struct registro {
     int proximo;
 };
 struct lista {
+    int info;
     int disponivel;
     int primeiro;
     struct registro A[MAX];
@@ -15,6 +16,7 @@ void InicializarLista(struct lista *lista) {
     int i = 0;
     lista->disponivel = 0;
     lista->primeiro = -1;
+    lista->info = 0;
     for (i = 0; i < MAX - 1; i++) {
         lista->A[i].proximo = i + 1;
     }
@@ -22,13 +24,17 @@ void InicializarLista(struct lista *lista) {
 }
 
 void InsereElemento(struct lista *lista, int elemento) {
-    if (lista->disponivel != -1) {
-        if (lista->primeiro == -1) {
-            lista->primeiro = 0;
+    if (lista->info < MAX) {
+        if (lista->primeiro = -1) {
+            lista->primeiro = lista->disponivel;
+            lista->disponivel = lista->disponivel + 1;
+            lista->A[lista->primeiro].elemento = elemento;
         }
-        lista->A[lista->disponivel].proximo = lista->disponivel;
         lista->A[lista->disponivel].elemento = elemento;
-        lista->A[lista->disponivel + 1].proximo = -1;
+        lista->A[lista->disponivel].proximo = lista->disponivel + 1;
+        lista->info++;
+    } else {
+        printf("Lista cheia");
     }
 }
 
@@ -39,16 +45,17 @@ void Print(struct lista *lista) {
     } else {
         while (lista->A[index].proximo != -1) {
             printf("Elemento: %d\n", lista->A[index].elemento);
-            index=lista->A[index].proximo;
+            index = lista->A[index].proximo;
         }
     }
 }
 int main(void) {
     struct lista listaTeste;
     InicializarLista(&listaTeste);
-    // printf("Disponivel: %d", listaTeste.disponivel);
-    // printf("\nPrimeiro: %d", listaTeste.primeiro);
-    InsereElemento(&listaTeste, 10);
-    InsereElemento(&listaTeste, 20);
-    Print(&listaTeste);
+    for (int i = 0; i <= MAX; i++) {
+        InsereElemento(&listaTeste, i + 10);
+    }
+    for (int i = 0; i < MAX; i++) {
+        printf("\nElemento %d\nProximo %d\n", listaTeste.A[i].elemento, listaTeste.A[i].proximo);
+    }
 }
