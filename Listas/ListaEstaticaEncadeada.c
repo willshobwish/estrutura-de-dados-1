@@ -26,18 +26,29 @@ void InsereElemento(struct lista *lista, int elemento) {
         if (lista->primeiro == -1) {
             lista->primeiro = 0;
         }
+        lista->A[lista->disponivel].proximo = lista->disponivel;
         lista->A[lista->disponivel].elemento = elemento;
-        lista->A[lista->disponivel].proximo = lista->disponivel + 1;
+        lista->A[lista->disponivel + 1].proximo = -1;
     }
 }
 
+void Print(struct lista *lista) {
+    int index = lista->primeiro;
+    if (lista->primeiro == -1) {
+        printf("Nao ha elementos na lista");
+    } else {
+        while (lista->A[index].proximo != -1) {
+            printf("Elemento: %d\n", lista->A[index].elemento);
+            index=lista->A[index].proximo;
+        }
+    }
+}
 int main(void) {
     struct lista listaTeste;
     InicializarLista(&listaTeste);
-    printf("Disponivel: %d", listaTeste.disponivel);
-    printf("\nPrimeiro: %d", listaTeste.primeiro);
+    // printf("Disponivel: %d", listaTeste.disponivel);
+    // printf("\nPrimeiro: %d", listaTeste.primeiro);
     InsereElemento(&listaTeste, 10);
-    printf("\nDisponivel: %d", listaTeste.disponivel);
-    printf("\nPrimeiro: %d", listaTeste.primeiro);
-    printf("\nElemento: %d", listaTeste.A[0].elemento);
+    InsereElemento(&listaTeste, 20);
+    Print(&listaTeste);
 }
