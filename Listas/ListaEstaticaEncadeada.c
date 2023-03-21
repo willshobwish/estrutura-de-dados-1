@@ -6,6 +6,7 @@ struct registro {
     int proximo;
 };
 struct lista {
+    // Info representa a quantidade de elementos ja na lista
     int info;
     int disponivel;
     int primeiro;
@@ -30,15 +31,16 @@ void InsereElemento(struct lista *lista, int elemento) {
             lista->disponivel = lista->disponivel + 1;
             lista->A[lista->primeiro].elemento = elemento;
         }
+        lista->disponivel++;
         lista->A[lista->disponivel].elemento = elemento;
-        lista->A[lista->disponivel].proximo = lista->disponivel + 1;
+        lista->A[lista->disponivel].proximo = -1;
         lista->info++;
     } else {
-        printf("Lista cheia");
+        printf("Lista cheia\n");
     }
 }
 
-void Print(struct lista *lista) {
+void PrintLista(struct lista *lista) {
     int index = lista->primeiro;
     if (lista->primeiro == -1) {
         printf("Nao ha elementos na lista");
@@ -55,7 +57,11 @@ int main(void) {
     for (int i = 0; i <= MAX; i++) {
         InsereElemento(&listaTeste, i + 10);
     }
-    for (int i = 0; i < MAX; i++) {
-        printf("\nElemento %d\nProximo %d\n", listaTeste.A[i].elemento, listaTeste.A[i].proximo);
-    }
+    printf("Primeiro elemento: %d\nDisponivel: %d",listaTeste.primeiro,listaTeste.disponivel);
+    // for (int i = 0; i < MAX; i++) {
+    //     printf("\nElemento %d\nProximo %d\n", listaTeste.A[i].elemento, listaTeste.A[i].proximo);
+    // }
+    PrintLista(&listaTeste);
+
+    
 }
