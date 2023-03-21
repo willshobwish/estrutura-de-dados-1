@@ -24,51 +24,70 @@ void InicializarLista(struct lista *lista) {
     lista->A[i].proximo = -1;
 }
 
-void InsereElemento(struct lista *lista, int elemento) {
-    if (lista->tamanho < MAX) {
-        if (lista->primeiro = -1) {
-            lista->primeiro = lista->disponivel;
-            lista->disponivel = lista->disponivel + 1;
-            lista->A[lista->primeiro].elemento = elemento;
+void Remove(struct lista *lista,int elemento) {
+    // Caso a lista nao seja vazia
+    if (lista->primeiro != -1) {
+        int auxiliar = lista->primeiro;
+        int anterior;
+        while(lista->A[auxiliar].elemento < elemento && lista->A[auxiliar].proximo != -1){
+            anterior = auxiliar;
+            auxiliar = lista->A[auxiliar].proximo;
+        }if(lista->A[auxiliar].elemento == elemento){
+            lista->primeiro = auxiliar;
+
+        }else{
+            lista->A[anterior].proximo=lista->A[auxiliar].proximo;
         }
-        lista->disponivel++;
-        lista->A[lista->disponivel].elemento = elemento;
-        lista->A[lista->disponivel].proximo = -1;
-        lista->tamanho++;
-    } else {
-        printf("Lista cheia\n");
+        int disponivel = lista->disponivel;
+        lista->disponivel = auxiliar;
+        lista->A[auxiliar].proximo = disponivel;
     }
 }
 
-void InsereElementoCorreto(struct lista *lista, int elemento) {
-    lista->A[lista->disponivel].elemento = elemento;
-    int auxiliar = lista->A[lista->disponivel].proximo;
-    lista->A[lista->disponivel].proximo = -1;
-    lista->tamanho= lista->tamanho +1;
-    // Se prim != -1 entao
-    if (lista->primeiro = -1) {
-        int i, anterior = -1;
-        i = lista->primeiro;
-        while (i != -1 && lista->A[i].elemento < elemento) {
-            anterior = i;
-            i = lista->A[i].proximo;
-        }
-        if (anterior != -1) {
-            lista->A[lista->disponivel].proximo = lista->primeiro;
-            lista->primeiro = lista->disponivel;
-        } else {
-            if (i != -1) {
-                lista->A[lista->disponivel].proximo = lista->A[anterior].proximo;
+void Insere(struct lista *lista, int elemento) {
+    // Verificacao de disponibilidade na lista
+    if (lista->disponivel != -1) {
+        // Armazena o indice disponivel
+        int auxiliar = lista->disponivel;
+        // Insere o elemento no indice disponivel
+        lista->A[auxiliar].elemento = elemento;
+        // Modifica o indice disponivel para o indice apontado pelo proximo
+        lista->disponivel = lista->A[auxiliar].proximo;
+        int i = lista->primeiro;
+        int anterior;
+        if (lista->primeiro != -1) {
+            // Enquanto nao encontrar o elemento na lista que seja maior que o elemento que esta inserindo, continuara
+            while (lista->A[i].elemento < elemento) {
+                // Necessita saber qual que eh o elemento anterior e qual sera o proximo elemento
+                anterior = i;
+                i = lista->A[i].proximo;
             }
-            lista->A[anterior].proximo = lista->disponivel;
         }
-    } else {
-        lista->primeiro = lista->disponivel;
+        // Caso o elemento inserido seja menor que o primeiro. Se o i for igual ao primeiro, isso quer dizer que o while nao foi executado
+        if (i == lista->primeiro) {
+            // Troca
+            lista->A[auxiliar].proximo = lista->primeiro;
+            lista->primeiro = auxiliar;
+        } else {
+            lista->A[anterior].proximo = lista->primeiro;
+            lista->A[auxiliar].proximo = i;
+        }
+    }else{
+        printf("Lista cheia");
     }
-    lista->disponivel = auxiliar;
 }
 
-void PrintLista(struct lista *lista) {
+void InsereCorreto(struct lista *lista, int elemento){
+    if(lista->disponivel != -1){
+        int auxiliar = lista->disponivel;
+        lista->A[auxiliar].elemento= elemento;
+        lista->disponivel = lista->A[auxiliar].proximo; 
+    }else{
+        printf("lista cheia");
+    }
+}
+
+void Impressao(struct lista *lista) {
     int index = lista->primeiro;
     if (lista->primeiro == -1) {
         printf("Nao ha elementos na lista");
@@ -82,12 +101,11 @@ void PrintLista(struct lista *lista) {
 int main(void) {
     struct lista listaTeste;
     InicializarLista(&listaTeste);
-    for(int i=0;i<MAX;i++){
-        InsereElementoCorreto(&listaTeste,i+10);
+    for (int i = 0; i < MAX; i++) {
+        InsereCorreto(&listaTeste, i + 10);
     }
     printf("Primeiro elemento: %d\nDisponivel: %d", listaTeste.primeiro, listaTeste.disponivel);
     for (int i = 0; i < MAX; i++) {
         printf("\nElemento %d\nProximo %d\n", listaTeste.A[i].elemento, listaTeste.A[i].proximo);
     }
-    PrintLista(&listaTeste);
 }
