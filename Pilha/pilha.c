@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #define MAX 20
 
-typedef struct
-{
+typedef struct pilha {
     int conteudoPilha[MAX];
     int topo;
 } Pilha;
@@ -35,32 +34,29 @@ void Push(Pilha *pilha, int elemento) {
     } else {
         pilha->conteudoPilha[pilha->topo] = elemento;
         pilha->topo++;
-        printf("%d", pilha->topo);
+        printf("Elemento inserido: %d\nTopo da pilha: %d\n\n",pilha->conteudoPilha[pilha->topo-1], pilha->topo);
     }
 }
-void Pop(Pilha *pilha, int *elemento) {
+int Pop(Pilha *pilha) {
+    int elemento;
     if (Vazio(pilha)) {
-        printf("Pilha vazia");
+        printf("Pilha vazia\n");
     } else {
-        pilha->topo--;
         elemento = pilha->conteudoPilha[pilha->topo];
+        pilha->topo--;
     }
+    return elemento;
 }
 
 int main(void) {
     Pilha pilha;
+    int resultado = 0;
     Inicializao(&pilha);
-    Push(&pilha, 10);
-    Push(&pilha, 12);
-    Push(&pilha, 13);
-    Push(&pilha, 14);
-    int resultado;
-    Pop(&pilha, &resultado);
-    printf("%d\n", resultado);
-    Pop(&pilha, &resultado);
-    printf("%d\n", resultado);
-    Pop(&pilha, &resultado);
-    printf("%d\n", resultado);
-    Pop(&pilha, &resultado);
-    printf("%d\n", resultado);
+    for (int i = 0; i < MAX; i++) {
+        Push(&pilha, i+20);
+    }
+    for (int i = 0; i < MAX + 1; i++) {
+        resultado = Pop(&pilha);
+        printf("Remocao da pilha: %d\n", resultado);
+    }
 }
