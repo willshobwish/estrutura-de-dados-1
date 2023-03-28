@@ -38,7 +38,6 @@ void Push(Pilha *pilha, int elemento) {
     }
 }
 void Pop(Pilha *pilha, int *elemento) {
-
     if (Vazio(pilha)) {
         printf("Pilha vazia\n");
     } else {
@@ -55,8 +54,8 @@ int main(void) {
     for (int i = 0; i < MAX; i++) {
         Push(&pilha, i + 20);
     }
-    for (int i = 0; i < MAX + 1; i++) {
-        Pop(&pilha,&resultado);
+    for (int i = 0; i < MAX; i++) {
+        Pop(&pilha, &resultado);
         printf("Remocao da pilha: %d\n", resultado);
     }
 }
