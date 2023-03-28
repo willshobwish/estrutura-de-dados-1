@@ -34,7 +34,45 @@ bool Cheia(Pilha *pilha){
 return false;
     }
 }
-void Push();
+
+void Push(Pilha *pilha,int elemento){
+    nodePilha *newNode = malloc(sizeof(nodePilha));
+    if(newNode == NULL){
+        printf("Pilha cheia");
+    }else{
+        newNode->elemento = elemento;
+        newNode->prox = pilha->topo;
+        pilha->topo = newNode;
+    }
+}
+
+void Pop(Pilha *pilha, int *elemento){
+    nodePilha *auxiliar;
+    if(Vazia(pilha)){
+        printf("Nao ha elementos na pilha");
+    }else{
+        auxiliar = pilha->topo;
+        *elemento = auxiliar->elemento;
+        pilha->topo = pilha->topo->prox;
+        free(auxiliar);
+    }
+}
+
+void ObterTopo(Pilha *pilha, int *elemento){
+    if(Vazia(pilha)){
+        printf("Nao ha elementos na pilha");
+    }else{
+        *elemento = pilha->topo->elemento;
+    }
+}
+
 int main(void){
+    Pilha pilha;
+    int resultado;
+    Inicializacao(&pilha);
+    Push(&pilha, 10);
+    Push(&pilha, 20);
+    ObterTopo(&pilha,&resultado);
+    printf("Elemento no topo: %d",resultado);
 
 }
