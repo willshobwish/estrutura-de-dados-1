@@ -34,29 +34,29 @@ void Push(Pilha *pilha, int elemento) {
     } else {
         pilha->conteudoPilha[pilha->topo] = elemento;
         pilha->topo++;
-        printf("Elemento inserido: %d\nTopo da pilha: %d\n\n",pilha->conteudoPilha[pilha->topo-1], pilha->topo);
+        printf("Elemento inserido: %d\nTopo da pilha: %d\n\n", pilha->conteudoPilha[pilha->topo - 1], pilha->topo);
     }
 }
-int Pop(Pilha *pilha) {
-    int elemento;
+void Pop(Pilha *pilha, int *elemento) {
+
     if (Vazio(pilha)) {
         printf("Pilha vazia\n");
     } else {
-        elemento = pilha->conteudoPilha[pilha->topo];
         pilha->topo--;
+        *elemento = pilha->conteudoPilha[pilha->topo];
     }
-    return elemento;
+    // return elemento;
 }
 
 int main(void) {
     Pilha pilha;
-    int resultado = 0;
+    int resultado;
     Inicializao(&pilha);
     for (int i = 0; i < MAX; i++) {
-        Push(&pilha, i+20);
+        Push(&pilha, i + 20);
     }
     for (int i = 0; i < MAX + 1; i++) {
-        resultado = Pop(&pilha);
+        Pop(&pilha,&resultado);
         printf("Remocao da pilha: %d\n", resultado);
     }
 }
