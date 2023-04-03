@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define MAX 3
-#define MAXPILHA 
+#define MAXPILHA 10
 
 typedef struct{
     int Pilhas[MAX];
@@ -13,7 +13,7 @@ typedef struct{
 
 void InicializaPilha(PilhaMultipla *Pilha){
     int i;
-    Pilha->NumeroElementoPilha = MAX
+    Pilha->NumeroElementoPilha = MAX;
 }
 
 int main(void){
