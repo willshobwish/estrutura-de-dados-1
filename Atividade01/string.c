@@ -1,42 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct strdim {
     char c;
-    struct strdim *proximo;
-    struct strdim *anterior;
+    struct strdim *prox;
 };
 
-struct strdim *Inicializa() {
-    struct strdim *string = malloc(sizeof(struct strdim));
-    string->anterior = NULL;
-    string->proximo = malloc(sizeof(struct strdim));
-    return string;
-}
-
-void Insere(struct strdim *string, char elemento) {
-    struct strdim *anterior, *proximo,**auxiliar=&string,*novo=malloc(sizeof(struct strdim));
-    while (auxiliar->proximo!=NULL){
-        anterior = auxiliar->anterior;
-        auxiliar = auxiliar->proximo;
-        proximo = auxiliar->proximo;
-        printf("Anterior: %p\nAtual: %p\nProximo: %p\n\n",anterior,auxiliar,proximo);
-    }proximo = novo;
-    proximo->proximo=NULL;
+void adicionar(struct strdim *string, char elemento) {
+    struct strdim *auxiliar = string;
+    while (auxiliar->prox != NULL) {
+        auxiliar = auxiliar->prox;
+    }
     auxiliar->c = elemento;
+    auxiliar->prox = malloc(sizeof(struct strdim));
+    auxiliar = auxiliar->prox;
+    auxiliar->prox = NULL;
 }
 
-void Imprime(struct strdim *string) {
-    struct strdim *anterior, *proximo, *atual = string;
-    while (atual->proximo != NULL) {
-        anterior = string->anterior;
-        atual = string->proximo;
-        proximo = atual->proximo;
-        printf("Caractere armazenado: %c\n", atual->c);
+void imprime(struct strdim *string) {
+    struct strdim *auxiliar = string;
+
+    while (auxiliar->prox != NULL) {
+        printf("%c", auxiliar->c);
+        auxiliar = auxiliar->prox;
     }
 }
+
 int main(void) {
-    struct strdim *string = Inicializa();
-    Insere(string, 'a');
-    Insere(string, 'b');
-    Imprime(string);
+    struct strdim string;
+
+    adicionar(&string, 'a');
+    adicionar(&string, 'b');
+    adicionar(&string, 'c');
+    adicionar(&string, 'd');
+    adicionar(&string, 'e');
+    imprime(&string);
 }
