@@ -26,13 +26,15 @@ void imprime(struct strdim *string) {
     }
 }
 
+void adicionarPalavra(struct strdim *string, char palavra[]){
+    for(int i=0;i<sizeof(palavra)/sizeof(char);i++){
+        adicionar(string,palavra[i]);
+    }
+}
+
 int main(void) {
     struct strdim string;
 
-    adicionar(&string, 'a');
-    adicionar(&string, 'b');
-    adicionar(&string, 'c');
-    adicionar(&string, 'd');
-    adicionar(&string, 'e');
+    adicionarPalavra(&string,"tretse");
     imprime(&string);
 }
