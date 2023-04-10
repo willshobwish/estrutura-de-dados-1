@@ -53,5 +53,11 @@ void obterInicioFila(Fila *fila, int *elemento){
 }
 
 int main(void){
-
+Fila fila;
+inicializacao(&fila);
+inserir(&fila,10);
+int elemento;
+remover(&fila, &elemento);
+printf("%d\n",elemento);
+return 0;
 }
