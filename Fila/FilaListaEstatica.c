@@ -62,6 +62,10 @@ int main(void) {
     inserir(&fila, 10);
     int elemento;
     obterInicioFila(&fila, &elemento);
-    printf("Primeiro elemento: %d", elemento);
+    printf("Primeiro elemento: %d\n", elemento);
+    remover(&fila, &elemento);
+    printf("Elemento removido: %d\n",elemento);
+        remover(&fila, &elemento);
+    printf("Elemento removido: %d\n",elemento);
     return 0;
 }
