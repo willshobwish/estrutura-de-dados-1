@@ -9,82 +9,107 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author Willian
+ * @param <TipoDeDado>
  */
-public class LinkedList<T> {
+public class LinkedList<TipoDeDado> {
 
-    private Node<T> head;
-    private Node<T> tail;
+    private No<TipoDeDado> comeco;
+    private No<TipoDeDado> inicio;
 
-    private static class Node<T> {
+    private static class No<TipoDeDado> {
 
-        T data;
-        Node<T> prev;
-        Node<T> next;
+        TipoDeDado dado;
+        No<TipoDeDado> anterior;
+        No<TipoDeDado> proximo;
 
-        public Node(T data) {
-            this.data = data;
+        public No(TipoDeDado dado) {
+            this.dado = dado;
         }
     }
 
-    public void addFirst(T element) {
-        Node<T> newNode = new Node<>(element);
-        if (head == null) {
-            head = tail = newNode;
+    /**
+     *
+     * @param elemento
+     */
+    public void adicionarComeco(TipoDeDado elemento) {
+        No<TipoDeDado> newNode = new No<>(elemento);
+        if (comeco == null) {
+            comeco = inicio = newNode;
         } else {
-            head.prev = newNode;
-            newNode.next = head;
-            head = newNode;
+            comeco.anterior = newNode;
+            newNode.proximo = comeco;
+            comeco = newNode;
         }
     }
 
-    public void addLast(T element) {
-        Node<T> newNode = new Node<>(element);
-        if (tail == null) {
-            head = tail = newNode;
+    /**
+     *
+     * @param elemento
+     */
+    public void adicionarFinal(TipoDeDado elemento) {
+        No<TipoDeDado> newNode = new No<>(elemento);
+        if (inicio == null) {
+            comeco = inicio = newNode;
         } else {
-            tail.next = newNode;
-            newNode.prev = tail;
-            tail = newNode;
+            inicio.proximo = newNode;
+            newNode.anterior = inicio;
+            inicio = newNode;
         }
     }
 
-    public void removeFirst() {
-        if (head == null) {
+    /**
+     *
+     */
+    public void removerPrimeiro() {
+        if (comeco == null) {
             throw new NoSuchElementException();
         }
-        head = head.next;
-        if (head == null) {
-            tail = null;
+        comeco = comeco.proximo;
+        if (comeco == null) {
+            inicio = null;
         } else {
-            head.prev = null;
+            comeco.anterior = null;
         }
     }
 
-    public void removeLast() {
-        if (tail == null) {
+    /**
+     *
+     */
+    public void removerUltimo() {
+        if (inicio == null) {
             throw new NoSuchElementException();
         }
-        tail = tail.prev;
-        if (tail == null) {
-            head = null;
+        inicio = inicio.anterior;
+        if (inicio == null) {
+            comeco = null;
         } else {
-            tail.next = null;
+            inicio.proximo = null;
         }
     }
 
-    public boolean isEmpty() {
-        return head == null;
+    /**
+     *
+     * @return
+     */
+    public boolean vazio() {
+        return comeco == null;
     }
 
-    public void clear() {
-        head = tail = null;
+    /**
+     *
+     */
+    public void limpar() {
+        comeco = inicio = null;
     }
 
-    public void printList() {
-        Node<T> current = head;
+    /**
+     *
+     */
+    public void imprimirLista() {
+        No<TipoDeDado> current = comeco;
         while (current != null) {
-            System.out.print(current.data + " ");
-            current = current.next;
+            System.out.print(current.dado + "");
+            current = current.proximo;
         }
         System.out.println();
     }
