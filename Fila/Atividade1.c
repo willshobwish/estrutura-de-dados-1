@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
+// #include <locale.h>
 struct nodeFila {
     int elemento;
     struct nodeFila *proximo;
@@ -101,11 +101,12 @@ void operacao(Fila *fila) {
 }
 
 int main(void) {
+    // setlocale(LC_ALL,"Portuguese");
     srand(time(NULL));
     Fila fila[4];
     Fila fila_teste;
     inicializacao(&fila_teste);
-    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento, cliente_atual = 0;
+    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento=0, cliente_atual = 0, clientes_atendidos=-1;
     // for (int i = 0; i < 4; i++) {
     //     inicializacao(&fila[i]);
     // }
@@ -129,8 +130,9 @@ int main(void) {
             if (elemento <= 0) {
                 remover(&fila_teste, &elemento);
                 cliente_atual++;
+                clientes_atendidos++;
             } else {
-                printf("Cliente atual: %d\nOperacao: %d\n", cliente_atual, elemento);
+                printf("Cliente atual: %d\nTempo restante da operacao: %d\nQuantidade de clientes atendidos: %d\n", cliente_atual,elemento, clientes_atendidos );
                 elemento--;
                 // delay(1);
             }
