@@ -103,26 +103,31 @@ void operacao(Fila *fila) {
 int main(void) {
     srand(time(NULL));
     Fila fila[4];
-
-    int tempo_de_simulacao = 500, tempo_atual = 0, intervalo = 10, elemento, cliente_atual = 0;
-    for (int i = 0; i < 4; i++) {
-        inicializacao(&fila[i]);
-    }
-    for (int i = 0; i < 4; i++) {
-        for (int i = 0; i < 10; i++) {
-            operacao(&fila[i]);
-        }
-    }
+    Fila fila_teste;
+    inicializacao(&fila_teste);
+    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento, cliente_atual = 0;
+    // for (int i = 0; i < 4; i++) {
+    //     inicializacao(&fila[i]);
+    // }
+    // for (int i = 0; i < 4; i++) {
+    //     for (int i = 0; i < 10; i++) {
+    //         operacao(&fila[i]);
+    //     }
+    // }
 
     // for (int i = 0; i < 10; i++) {
     //     remover(&fila, &elemento);
     //     printf("Operacao: %d\n", elemento);
     // }
+    for (int i = 0; i < 20; i++) {
+        operacao(&fila_teste);
+    }
     while (tempo_atual <= tempo_de_simulacao) {
         printf("\nTempo atual: %d\n", tempo_atual);
-        if (!vazia(&fila[0])) {
+
+        if (!vazia(&fila_teste)) {
             if (elemento <= 0) {
-                remover(&fila[0], &elemento);
+                remover(&fila_teste, &elemento);
                 cliente_atual++;
             } else {
                 printf("Cliente atual: %d\nOperacao: %d\n", cliente_atual, elemento);
