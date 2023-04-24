@@ -79,20 +79,22 @@ int random_number(int intervalo) {
     return rand() % intervalo;
 }
 
-void operacao(Fila *fila, int numero) {
-    switch (numero) {
+void operacao(Fila *fila) {
+    switch (random_number(3)) {
         case 0:
-            printf("Chegada\n");
+            // Saque
+            inserir(fila, 5);
             break;
         case 1:
-            printf("Saque\n");
+            // Deposito
+            inserir(fila, 7);
+
             break;
         case 2:
-            printf("Deposito\n");
+            // Transacao
+            inserir(fila, 10);
             break;
-        case 3:
-            printf("Transacao\n");
-            break;
+
         default:
             break;
     }
@@ -100,13 +102,34 @@ void operacao(Fila *fila, int numero) {
 
 int main(void) {
     srand(time(NULL));
-    Fila *fila;
-    int tempo_de_simulacao = 10, tempo_atual = 0, intervalo = 10;
+    Fila fila[4];
+
+    int tempo_de_simulacao = 500, tempo_atual = 0, intervalo = 10, elemento, cliente_atual = 0;
+    for (int i = 0; i < 4; i++) {
+        inicializacao(&fila[i]);
+    }
+    for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 10; i++) {
+            operacao(&fila[i]);
+        }
+    }
+
+    // for (int i = 0; i < 10; i++) {
+    //     remover(&fila, &elemento);
+    //     printf("Operacao: %d\n", elemento);
+    // }
     while (tempo_atual <= tempo_de_simulacao) {
-        printf("Tempo atual: %d\n", tempo_atual);
+        printf("\nTempo atual: %d\n", tempo_atual);
+        if (!vazia(&fila[0])) {
+            if (elemento <= 0) {
+                remover(&fila[0], &elemento);
+                cliente_atual++;
+            } else {
+                printf("Cliente atual: %d\nOperacao: %d\n", cliente_atual, elemento);
+                elemento--;
+                // delay(1);
+            }
+        }
         tempo_atual++;
-        printf("%d\n", random_number(intervalo));
-        operacao(fila, random_number(4));
-        delay(1);
     }
 }
