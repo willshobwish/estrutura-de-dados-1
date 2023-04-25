@@ -71,31 +71,28 @@ void imprimirLinha(MatrizEsparsa *matriz, int linha) {
     }
 }
 
-void imprimirColuna(MatrizEsparsa *matriz, int coluna){
+void imprimirColuna(MatrizEsparsa *matriz, int coluna) {
     elemento *aux;
-    aux=matriz->coluna[coluna];
-    while (aux!=NULL)
-    {
-        printf("%d",aux->info);
-        aux=aux->baixo;
+    aux = matriz->coluna[coluna];
+    while (aux != NULL) {
+        printf("%d", aux->info);
+        aux = aux->baixo;
     }
-    
 }
 
-void imprimirLinhaNula(MatrizEsparsa *matriz, int linha){
+void imprimirLinhaNula(MatrizEsparsa *matriz, int linha) {
     int coluna;
     elemento *aux;
-    aux=matriz->linha[linha];
-    for(coluna=0;coluna<COLUNA;coluna++){
-        if((aux!=NULL)&&(aux->coluna==coluna)){
-            printf("%d",aux->info);
-            aux=aux->direita;
-        }else{
+    aux = matriz->linha[linha];
+    for (coluna = 0; coluna < COLUNA; coluna++) {
+        if ((aux != NULL) && (aux->coluna == coluna)) {
+            printf("%d", aux->info);
+            aux = aux->direita;
+        } else {
             printf("0");
         }
     }
 }
 
 int main(void) {
-    
 }
