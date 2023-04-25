@@ -1,8 +1,13 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
-// #include <locale.h>
+
+#define CAIXA
+#define CLIENTES 20
+#define TEMPO_SIMULACAO
+
 struct nodeFila {
     int elemento;
     struct nodeFila *proximo;
@@ -100,13 +105,35 @@ void operacao(Fila *fila) {
     }
 }
 
+void tipo_operacao(int operacao, char *string) {
+    switch (operacao) {
+        case 5:
+            // Saque
+            strcpy(string,"saque"); 
+            break;
+        case 7:
+            // Deposito
+            strcpy(string,"deposito"); 
+            break;
+        case 10:
+            // Transacao
+            strcpy(string,"transacao"); 
+            break;
+
+        default:
+            break;
+    }
+}
+
 int main(void) {
     // setlocale(LC_ALL,"Portuguese");
     srand(time(NULL));
     Fila fila[4];
     Fila fila_teste;
     inicializacao(&fila_teste);
-    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento=0, cliente_atual = 0, clientes_atendidos=-1;
+    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento = 0, cliente_atual = 0, clientes_atendidos = -1;
+    float tempo_medio = 0;
+    char nome_operacao[50];
     // for (int i = 0; i < 4; i++) {
     //     inicializacao(&fila[i]);
     // }
@@ -120,7 +147,7 @@ int main(void) {
     //     remover(&fila, &elemento);
     //     printf("Operacao: %d\n", elemento);
     // }
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < CLIENTES; i++) {
         operacao(&fila_teste);
     }
     while (tempo_atual <= tempo_de_simulacao) {
@@ -129,14 +156,17 @@ int main(void) {
         if (!vazia(&fila_teste)) {
             if (elemento <= 0) {
                 remover(&fila_teste, &elemento);
+                tipo_operacao(elemento,nome_operacao);
+                tempo_medio += elemento;
                 cliente_atual++;
                 clientes_atendidos++;
             } else {
-                printf("Cliente atual: %d\nTempo restante da operacao: %d\nQuantidade de clientes atendidos: %d\n", cliente_atual,elemento, clientes_atendidos );
+                printf("Cliente atual: %d\nOperacao: %s\nTempo restante da operacao: %d\n", cliente_atual, nome_operacao,elemento);
                 elemento--;
                 // delay(1);
             }
         }
         tempo_atual++;
     }
+    printf("\nQuantidade de clientes atendidos: %d\nQuantidade de clientes nao atendidos: %d\nTempo de simulacao: %d\nTempo medio de espera: %.2f", clientes_atendidos, CLIENTES - clientes_atendidos, tempo_de_simulacao, tempo_medio / CLIENTES);
 }
