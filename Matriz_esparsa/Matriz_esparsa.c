@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define N 20
-#define M 20
+#define LINHA 20
+#define COLUNA 20
 
 typedef struct no {
     int info, linha, coluna;
@@ -12,15 +12,15 @@ typedef struct no {
 } elemento;
 
 typedef struct {
-    elemento *linha[N];
-    elemento *coluna[M];
+    elemento *linha[LINHA];
+    elemento *coluna[COLUNA];
 } MatrizEsparsa;
 
 void inicializarMatriz(MatrizEsparsa *matriz) {
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < LINHA; i++) {
         matriz->linha[i] = NULL;
     }
-    for (int i = 0; i < M; i++) {
+    for (int i = 0; i < COLUNA; i++) {
         matriz->coluna[i] = NULL;
     }
 }
@@ -66,9 +66,36 @@ void imprimirLinha(MatrizEsparsa *matriz, int linha) {
     elemento *aux;
     aux = matriz->linha[linha];
     while (aux != NULL) {
-        printf("%d\n", aux->info);
+        printf("%d\LINHA", aux->info);
+        aux = aux->direita;
+    }
+}
+
+void imprimirColuna(MatrizEsparsa *matriz, int coluna){
+    elemento *aux;
+    aux=matriz->coluna[coluna];
+    while (aux!=NULL)
+    {
+        printf("%d",aux->info);
+        aux=aux->baixo;
+    }
+    
+}
+
+void imprimirLinhaNula(MatrizEsparsa *matriz, int linha){
+    int coluna;
+    elemento *aux;
+    aux=matriz->linha[linha];
+    for(coluna=0;coluna<COLUNA;coluna++){
+        if((aux!=NULL)&&(aux->coluna==coluna)){
+            printf("%d",aux->info);
+            aux=aux->direita;
+        }else{
+            printf("0");
+        }
     }
 }
 
 int main(void) {
+    
 }
