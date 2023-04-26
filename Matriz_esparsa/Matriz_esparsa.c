@@ -35,8 +35,48 @@ void insercao(MatrizEsparsa *matriz, int linha, int coluna, int informacao) {
     novo->baixo = NULL;
     pontocoluna = matriz->coluna[coluna];
     pontolinha = matriz->linha[linha];
-    if (pontocoluna == NULL) {
-        matriz->coluna[coluna] = novo;
+    // if (pontocoluna == NULL) {
+    //     matriz->coluna[coluna] = novo;
+    // } else {
+    //     anterior = NULL;
+    //     while ((pontocoluna != NULL) && (pontocoluna->linha < linha)) {
+    //         anterior = pontocoluna;
+    //         pontocoluna = pontocoluna->baixo;
+    //     }
+    //     if (pontocoluna != NULL) {
+    //         if (pontocoluna->linha == linha) {
+    //             printf("Ja existe elemento na linha\n");
+    //         } else if (anterior == NULL) {
+    //             novo->baixo = matriz->coluna[coluna];
+    //             matriz->coluna[coluna] = novo;
+    //         } else {
+    //             novo->baixo = pontocoluna;
+    //             anterior->baixo = novo;
+    //         }
+    //     } else {
+    //         anterior->baixo = novo;
+    //     }
+    // }
+    if(pontocoluna==NULL){
+        matriz->coluna[linha];
+    }else{
+        anterior=NULL;
+        while((pontocoluna!=NULL)&&(pontocoluna->linha<linha)){
+            anterior=pontocoluna;
+            pontocoluna=pontocoluna->baixo;
+        }if(pontocoluna!=NULL){
+            if(pontocoluna->linha==linha){
+                printf("Ja existe elemento na linha");
+            }else if(anterior == NULL){
+                novo->baixo=matriz->coluna[coluna];
+                matriz->coluna[coluna] = novo;
+            }else{
+                novo->baixo=pontocoluna;
+                anterior->baixo=novo;
+            }
+        }else{
+            anterior->baixo=novo;
+        }
     }
     if (pontolinha == NULL) {
         matriz->linha[linha] = novo;
@@ -48,7 +88,8 @@ void insercao(MatrizEsparsa *matriz, int linha, int coluna, int informacao) {
         }
         if (pontolinha != NULL) {
             if (pontolinha->coluna == coluna) {
-                printf("Ja existe elemento na coluna");
+                printf("Ja existe um elemento na coluna\n");
+
             } else if (anterior == NULL) {
                 novo->direita = matriz->linha[linha];
                 matriz->linha[linha] = novo;
@@ -65,8 +106,9 @@ void insercao(MatrizEsparsa *matriz, int linha, int coluna, int informacao) {
 void imprimirLinha(MatrizEsparsa *matriz, int linha) {
     elemento *aux;
     aux = matriz->linha[linha];
+    printf("Impressao de linha\n");
     while (aux != NULL) {
-        printf("%d\LINHA", aux->info);
+        printf("%d ", aux->info);
         aux = aux->direita;
     }
 }
@@ -74,8 +116,9 @@ void imprimirLinha(MatrizEsparsa *matriz, int linha) {
 void imprimirColuna(MatrizEsparsa *matriz, int coluna) {
     elemento *aux;
     aux = matriz->coluna[coluna];
+    printf("Impressao da coluna\n");
     while (aux != NULL) {
-        printf("%d", aux->info);
+        printf("%d\n", aux->info);
         aux = aux->baixo;
     }
 }
@@ -86,13 +129,23 @@ void imprimirLinhaNula(MatrizEsparsa *matriz, int linha) {
     aux = matriz->linha[linha];
     for (coluna = 0; coluna < COLUNA; coluna++) {
         if ((aux != NULL) && (aux->coluna == coluna)) {
-            printf("%d", aux->info);
+            printf("%d ", aux->info);
             aux = aux->direita;
         } else {
-            printf("0");
+            printf("0 ");
         }
     }
+    printf("\n");
 }
 
 int main(void) {
+    MatrizEsparsa matriz;
+    inicializarMatriz(&matriz);
+
+    insercao(&matriz, 0, 0, 10);
+    insercao(&matriz, 0, 1, 20);
+    // insercao(&matriz,0,2,10);
+    // insercao(&matriz,0,3,10);
+    imprimirColuna(&matriz, 0);
+    imprimirLinha(&matriz, 0);
 }
