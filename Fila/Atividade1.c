@@ -6,7 +6,7 @@
 
 #define CAIXA
 #define CLIENTES 20
-#define TEMPO_SIMULACAO
+#define TEMPO_SIMULACAO 200
 
 struct nodeFila {
     int elemento;
@@ -109,15 +109,15 @@ void tipo_operacao(int operacao, char *string) {
     switch (operacao) {
         case 5:
             // Saque
-            strcpy(string,"saque"); 
+            strcpy(string, "saque");
             break;
         case 7:
             // Deposito
-            strcpy(string,"deposito"); 
+            strcpy(string, "deposito");
             break;
         case 10:
             // Transacao
-            strcpy(string,"transacao"); 
+            strcpy(string, "transacao");
             break;
 
         default:
@@ -131,7 +131,7 @@ int main(void) {
     Fila fila[4];
     Fila fila_teste;
     inicializacao(&fila_teste);
-    int tempo_de_simulacao = 100, tempo_atual = 0, intervalo = 10, elemento = 0, cliente_atual = 0, clientes_atendidos = -1;
+    int tempo_atual = 0, intervalo = 10, elemento = 0, cliente_atual = 0, clientes_atendidos = -1;
     float tempo_medio = 0;
     char nome_operacao[50];
     // for (int i = 0; i < 4; i++) {
@@ -150,23 +150,23 @@ int main(void) {
     for (int i = 0; i < CLIENTES; i++) {
         operacao(&fila_teste);
     }
-    while (tempo_atual <= tempo_de_simulacao) {
+    while (tempo_atual <= TEMPO_SIMULACAO) {
         printf("\nTempo atual: %d\n", tempo_atual);
 
         if (!vazia(&fila_teste)) {
             if (elemento <= 0) {
                 remover(&fila_teste, &elemento);
-                tipo_operacao(elemento,nome_operacao);
+                tipo_operacao(elemento, nome_operacao);
                 tempo_medio += elemento;
                 cliente_atual++;
                 clientes_atendidos++;
             } else {
-                printf("Cliente atual: %d\nOperacao: %s\nTempo restante da operacao: %d\n", cliente_atual, nome_operacao,elemento);
+                printf("Cliente atual: %d\nOperacao: %s\nTempo restante da operacao: %d\n", cliente_atual, nome_operacao, elemento);
                 elemento--;
                 // delay(1);
             }
         }
         tempo_atual++;
     }
-    printf("\nQuantidade de clientes atendidos: %d\nQuantidade de clientes nao atendidos: %d\nTempo de simulacao: %d\nTempo medio de espera: %.2f", clientes_atendidos, CLIENTES - clientes_atendidos, tempo_de_simulacao, tempo_medio / CLIENTES);
+    printf("\nQuantidade de clientes atendidos: %d\nQuantidade de clientes nao atendidos: %d\nTempo de simulacao: %d\nTempo medio de espera: %.2f", clientes_atendidos, CLIENTES - clientes_atendidos, TEMPO_SIMULACAO, tempo_medio / CLIENTES);
 }
