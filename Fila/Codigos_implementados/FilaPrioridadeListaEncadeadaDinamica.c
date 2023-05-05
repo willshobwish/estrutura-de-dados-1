@@ -2,24 +2,24 @@
 #include <stdlib.h>
 
 // tipoelem = int
-struct noFila {
+struct nodeQueue {
     int elemento;
     int prioridade;
-    struct noFila *prox;
+    struct nodeQueue *proximo;
 };
 
 // Descritor
 typedef struct {
-    struct noFila *inicio;
-    struct noFila *fim;
-} FilaP;
+    struct nodeQueue *inicio;
+    struct nodeQueue *fim;
+} FilaPrioridade;
 
-void inicializacao(FilaP *fila) {
+void inicializacao(FilaPrioridade *fila) {
     fila->inicio = NULL;
     fila->fim = NULL;
 }
 
-short vazia(FilaP *fila) {  // verifica se a fila está vazia
+short vazia(FilaPrioridade *fila) {  // verifica se a fila está vazia
     if (fila->inicio == NULL)
         return 1;
     else
@@ -27,63 +27,63 @@ short vazia(FilaP *fila) {  // verifica se a fila está vazia
 }
 
 // a código da função fila cheia pode ser inserido na função inserir
-short cheia(FilaP *fila) {  // a fila estará cheia quando não houver memória para ser alocada
-    struct noFila *novoNo;
-    novoNo = malloc(sizeof(struct noFila));
+short cheia(FilaPrioridade *fila) {  // a fila estará cheia quando não houver memória para ser alocada
+    struct nodeQueue *newNode;
+    newNode = malloc(sizeof(struct nodeQueue));
     // malloc retorna null quando não houver memória disponível para alocação ou quando ocorrer algum erro durante a alocação - execução do malloc
-    if (novoNo == NULL)
+    if (newNode == NULL)
         return 1;
     else
         return 0;
 }
 
-void inserir(FilaP *fila, int elemento, int prioridade) {  // inserção ordenada
-    struct noFila *novoNo, *aux, *anterior;
-    novoNo = malloc(sizeof(struct noFila));
-    if (novoNo == NULL)
+void inserir(FilaPrioridade *fila, int elemento, int prioridade) {  // inserção ordenada
+    struct nodeQueue *newNode, *aux, *anterior;
+    newNode = malloc(sizeof(struct nodeQueue));
+    if (newNode == NULL)
         printf("Fila Cheia!!!");
     else {
-        novoNo->prox = NULL;
-        novoNo->prioridade = prioridade;
-        novoNo->elemento = elemento;
+        newNode->proximo = NULL;
+        newNode->prioridade = prioridade;
+        newNode->elemento = elemento;
         aux = fila->inicio;
         anterior = NULL;
         while ((aux != NULL) && (aux->prioridade >= prioridade)) {
             anterior = aux;
-            aux = aux->prox;
+            aux = aux->proximo;
         }
         if (aux != NULL) {
             if (anterior == NULL) {
-                novoNo->prox = fila->inicio;
-                fila->inicio = novoNo;
+                newNode->proximo = fila->inicio;
+                fila->inicio = newNode;
             } else {
-                novoNo->prox = aux;
-                anterior->prox = novoNo;
+                newNode->proximo = aux;
+                anterior->proximo = newNode;
             }
         } else {
             if (anterior == NULL)  // fila vazia
-                fila->inicio = novoNo;
+                fila->inicio = newNode;
             else  // inserção no final da fila
-                fila->fim->prox = novoNo;
-            fila->fim = novoNo;
+                fila->fim->proximo = newNode;
+            fila->fim = newNode;
         }
     }
 }
 
-void remover(FilaP *fila, int *elemento, int *prioridade) {
-    struct noFila *aux;
+void remover(FilaPrioridade *fila, int *elemento, int *prioridade) {
+    struct nodeQueue *aux;
     if (vazia(fila))
         printf("Fila Vazia - Não há elementos para remover!!!");
     else {
         aux = fila->inicio;
         *elemento = aux->elemento;
         *prioridade = aux->prioridade;
-        fila->inicio = fila->inicio->prox;
+        fila->inicio = fila->inicio->proximo;
         free(aux);
     }
 }
 
-void selecao(FilaP *fila, int *elemento) {
+void selecao(FilaPrioridade *fila, int *elemento) {
     if (vazia(fila))
         printf("Fila Vazia - Não há elementos na fila!!!");
     else
@@ -91,10 +91,18 @@ void selecao(FilaP *fila, int *elemento) {
 }
 // Retorna o elemento que está no inicio da fila
 
+void imprimir(FilaPrioridade *fila) {
+    struct nodeQueue *aux = fila->inicio;
+    while (aux!=NULL){
+        printf("Prioridade: %d Elemento: %d\n",aux->prioridade,aux->elemento);
+        aux=aux->proximo;
+    }
+}
+
 int main(void) {
     int elemIni, elemRem, prioRem;
-    struct noFila *i = NULL;
-    FilaP F1;
+    struct nodeQueue *i = NULL;
+    FilaPrioridade F1;
     inicializacao(&F1);
     if (vazia(&F1))
         printf("\nFila vazia!");
@@ -110,7 +118,7 @@ int main(void) {
     // Imprimindo a fila
     printf("\nInicio (valor elem): %d", F1.inicio->elemento);
     printf("\nFim (valor elem): %d\n", F1.fim->elemento);
-    for (i = F1.inicio; i != NULL; i = i->prox)
+    for (i = F1.inicio; i != NULL; i = i->proximo)
         printf("%d ", i->elemento);
 
     selecao(&F1, &elemIni);
@@ -126,8 +134,9 @@ int main(void) {
     // Imprimindo a fila
     printf("\nInicio (valor elem): %d", F1.inicio->elemento);
     printf("\nFim (valor elem): %d\n", F1.fim->elemento);
-    for (i = F1.inicio; i != NULL; i = i->prox)
+    for (i = F1.inicio; i != NULL; i = i->proximo)
         printf("%d ", i->elemento);
 
+    imprimir(&F1);
     return (0);
 }
