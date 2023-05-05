@@ -1,9 +1,8 @@
-#define MAX 15
-#define NPilha 3
-
 #include <stdio.h>
 #include <stdlib.h>
 
+#define MAX 15
+#define NPilha 3
 struct PilhaMultp {
     int P[MAX];
     int base[NPilha];

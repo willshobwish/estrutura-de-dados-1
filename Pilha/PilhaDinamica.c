@@ -1,56 +1,54 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct
-{
+typedef struct {
     int elemento;
     struct nodePilha *prox;
-}nodePilha;
+} nodePilha;
 
-typedef struct 
-{
+typedef struct {
     nodePilha *topo;
-}Pilha;
+} Pilha;
 
-void Inicializacao(Pilha *pilha){
+void Inicializacao(Pilha *pilha) {
     pilha->topo = NULL;
 }
 
-bool Vazia(Pilha *pilha){
-    if(pilha->topo == NULL){
+bool Vazia(Pilha *pilha) {
+    if (pilha->topo == NULL) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
-bool Cheia(Pilha *pilha){
+bool Cheia(Pilha *pilha) {
     nodePilha *newNode = malloc(sizeof(pilha));
-    if(newNode == NULL){
+    if (newNode == NULL) {
         printf("Nao foi possivel alocar memoria");
         return true;
-    }else{
-return false;
+    } else {
+        return false;
     }
 }
 
-void Push(Pilha *pilha,int elemento){
+void Push(Pilha *pilha, int elemento) {
     nodePilha *newNode = malloc(sizeof(nodePilha));
-    if(newNode == NULL){
+    if (newNode == NULL) {
         printf("Pilha cheia");
-    }else{
+    } else {
         newNode->elemento = elemento;
         newNode->prox = pilha->topo;
         pilha->topo = newNode;
     }
 }
 
-void Pop(Pilha *pilha, int *elemento){
+void Pop(Pilha *pilha, int *elemento) {
     nodePilha *auxiliar;
-    if(Vazia(pilha)){
+    if (Vazia(pilha)) {
         printf("Nao ha elementos na pilha");
-    }else{
+    } else {
         auxiliar = pilha->topo;
         *elemento = auxiliar->elemento;
         pilha->topo = pilha->topo->prox;
@@ -58,21 +56,20 @@ void Pop(Pilha *pilha, int *elemento){
     }
 }
 
-void ObterTopo(Pilha *pilha, int *elemento){
-    if(Vazia(pilha)){
+void ObterTopo(Pilha *pilha, int *elemento) {
+    if (Vazia(pilha)) {
         printf("Nao ha elementos na pilha");
-    }else{
+    } else {
         *elemento = pilha->topo->elemento;
     }
 }
 
-int main(void){
+int main(void) {
     Pilha pilha;
     int resultado;
     Inicializacao(&pilha);
     Push(&pilha, 10);
     Push(&pilha, 20);
-    ObterTopo(&pilha,&resultado);
-    printf("Elemento no topo: %d",resultado);
-
+    ObterTopo(&pilha, &resultado);
+    printf("Elemento no topo: %d", resultado);
 }
