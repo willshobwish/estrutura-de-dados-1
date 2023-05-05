@@ -55,12 +55,10 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
 
 void imprimir(FilaPrioridade *fila) {
     struct noFila *aux = fila->inicio;
-    while (aux!=NULL)
-    {
-        printf("Prioridade:%d Elemento:%d",aux->prioridade,aux->elemento);
-        aux=aux->prox;
+    while (aux != NULL) {
+        printf("Prioridade:%d Elemento:%d", aux->prioridade, aux->elemento);
+        aux = aux->prox;
     }
-    
 }
 
 int main(void) {
