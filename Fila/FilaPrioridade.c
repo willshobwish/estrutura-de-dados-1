@@ -1,8 +1,8 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<stdbool.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-struct noFila{
+struct noFila {
     int elemento;
     int prioridade;
     struct noFila *prox;
@@ -11,49 +11,63 @@ struct noFila{
 typedef struct {
     struct noFila *inicio;
     struct nofila *fim;
-}FilaP;
+} FilaPrioridade;
 
-void inicializacao(FilaP *fila){
-    fila->inicio=NULL;
-    fila->fim = NULL;    
+void inicializacao(FilaPrioridade *fila) {
+    fila->inicio = NULL;
+    fila->fim = NULL;
 }
 
-bool vazia(FilaP *fila){
-    if(fila->inicio==NULL){
+bool vazia(FilaPrioridade *fila) {
+    if (fila->inicio == NULL) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
-bool cheia(FilaP *fila){
+bool cheia(FilaPrioridade *fila) {
     struct noFila *novoNo;
     novoNo = malloc(sizeof(struct noFila));
-    if(novoNo == NULL){
+    if (novoNo == NULL) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
-void inserir(FilaP *fila, int elemento, int prioridade){
+void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
     struct noFila *novoNo, *aux, *anterior;
     novoNo = malloc(sizeof(struct noFila));
-    if(novoNo == NULL){
+    if (novoNo == NULL) {
         printf("Fila cheia");
-    }else{
+    } else {
         novoNo->prox = NULL;
-        novoNo->prioridade=prioridade;
-        novoNo->elemento=elemento;
+        novoNo->prioridade = prioridade;
+        novoNo->elemento = elemento;
         aux = fila->inicio;
-        anterior=NULL;
-        while((aux!=NULL)&&(aux->prox>=prioridade)){
-anterior=aux;
-aux=aux->prox;
-
+        anterior = NULL;
+        while ((aux != NULL) && (aux->prox >= prioridade)) {
+            anterior = aux;
+            aux = aux->prox;
         }
     }
 }
 
-int main(void){
+void imprimir(FilaPrioridade *fila) {
+    struct noFila *aux = fila->inicio;
+    while (aux!=NULL)
+    {
+        printf("Prioridade:%d Elemento:%d",aux->prioridade,aux->elemento);
+        aux=aux->prox;
+    }
+    
+}
 
+int main(void) {
+    FilaPrioridade fila;
+    inicializacao(&fila);
+    for (int i = 0; i < 20; i++) {
+        inserir(&fila, i * 10 + 5, i);
+    }
+    imprimir(&fila);
 }
