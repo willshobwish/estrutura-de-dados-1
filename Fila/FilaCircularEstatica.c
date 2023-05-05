@@ -41,6 +41,12 @@ void inserir(Fila *fila, int elemento) {
     }
 }
 
+void imprimir(Fila *fila){
+    for(int i=fila->inicio;i<fila->fim;i++){
+        printf("%d -> %d\n",i,fila->ElementosFila[i]);
+    }
+}
+
 void remover(Fila *fila, int *elemento) {
     if (vazia(fila)) {
         printf("Lista vazia");
@@ -59,5 +65,10 @@ void obterInicioFila(Fila *fila, int *elemento) {
 }
 
 int main(void){
-
+    Fila fila;
+    inicializacao(&fila);
+    for(int i=0;i<MAX;i++){
+    inserir(&fila,10*i+5);
+    }
+    imprimir(&fila);
 }
