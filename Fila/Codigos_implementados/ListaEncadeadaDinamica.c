@@ -65,13 +65,13 @@ void remover(Fila *fila, int *elemento) {
     }
 }
 
+// Retorna o elemento que está no inicio da fila
 void obterIncioFila(Fila *fila, int *elemento) {
     if (vazia(fila))
         printf("Fila Vazia - Não há elementos na fila!!!");
     else
         *elemento = fila->inicio->elemento;
 }
-// Retorna o elemento que está no inicio da fila
 
 int main(void) {
     int elemIni, elemRem;
