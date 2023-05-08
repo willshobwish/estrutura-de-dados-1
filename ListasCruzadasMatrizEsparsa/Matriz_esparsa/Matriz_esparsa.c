@@ -57,25 +57,26 @@ void insercao(MatrizEsparsa *matriz, int linha, int coluna, int informacao) {
     //         anterior->baixo = novo;
     //     }
     // }
-    if(pontocoluna==NULL){
+    if (pontocoluna == NULL) {
         matriz->coluna[linha];
-    }else{
-        anterior=NULL;
-        while((pontocoluna!=NULL)&&(pontocoluna->linha<linha)){
-            anterior=pontocoluna;
-            pontocoluna=pontocoluna->baixo;
-        }if(pontocoluna!=NULL){
-            if(pontocoluna->linha==linha){
+    } else {
+        anterior = NULL;
+        while ((pontocoluna != NULL) && (pontocoluna->linha < linha)) {
+            anterior = pontocoluna;
+            pontocoluna = pontocoluna->baixo;
+        }
+        if (pontocoluna != NULL) {
+            if (pontocoluna->linha == linha) {
                 printf("Ja existe elemento na linha");
-            }else if(anterior == NULL){
-                novo->baixo=matriz->coluna[coluna];
+            } else if (anterior == NULL) {
+                novo->baixo = matriz->coluna[coluna];
                 matriz->coluna[coluna] = novo;
-            }else{
-                novo->baixo=pontocoluna;
-                anterior->baixo=novo;
+            } else {
+                novo->baixo = pontocoluna;
+                anterior->baixo = novo;
             }
-        }else{
-            anterior->baixo=novo;
+        } else {
+            anterior->baixo = novo;
         }
     }
     if (pontolinha == NULL) {

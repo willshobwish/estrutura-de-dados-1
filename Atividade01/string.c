@@ -34,7 +34,6 @@ void adicionarPalavra(struct strdim *string, char palavra[]){
 
 int main(void) {
     struct strdim string;
-
     adicionarPalavra(&string,"tretse");
     imprime(&string);
 }
