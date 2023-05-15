@@ -48,6 +48,8 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {  // inserçã
         newNode->elemento = elemento;
         aux = fila->inicio;
         anterior = NULL;
+        // Percorre a fila enquanto o auxiliar nao for nulo e a prioridade for maior 
+        // A prioridade eh decrescente 
         while ((aux != NULL) && (aux->prioridade >= prioridade)) {
             anterior = aux;
             aux = aux->proximo;
@@ -61,9 +63,10 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {  // inserçã
                 anterior->proximo = newNode;
             }
         } else {
-            if (anterior == NULL)  // fila vazia
+            // Caso a fila seja vazia
+            if (anterior == NULL)  
                 fila->inicio = newNode;
-            else  // inserção no final da fila
+            else 
                 fila->fim->proximo = newNode;
             fila->fim = newNode;
         }
