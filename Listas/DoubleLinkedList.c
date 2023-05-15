@@ -3,42 +3,44 @@
 
 struct Lista {
     int elemento;
-    struct Lista *proximo = NULL;
-    *anterior;
+    struct Lista *proximo;
+    struct Lista *anterior;
 };
 
-void Insere(struct Lista *lista, int elemento) {
-    struct Lista *anterior, *proximo, *atual = lista;
-    while (atual->proximo != NULL) {
-        anterior = atual->anterior;
-        atual = atual->proximo;
-        proximo = atual->proximo;
-        ImprimeInformacoes(anterior);
-        ImprimeInformacoes(atual);
-        ImprimeInformacoes(proximo);
+typedef struct Lista Lista;
+
+void Insere(Lista *lista, int elemento) {
+    Lista *aux = lista, *novo = malloc(sizeof(Lista));
+    novo->elemento = elemento;
+    while (aux->proximo != NULL) {
+        aux = aux->proximo;
     }
-    atual = proximo;
-    atual = malloc(sizeof(struct Lista));
-    atual->elemento = elemento;
-    atual->anterior = anterior;
-    atual->proximo = NULL;
+    if (aux == NULL) {
+        printf("Lista vazia\n");
+        novo->proximo = NULL;
+        novo->anterior = NULL;
+        aux = novo;
+    } else if (aux != NULL) {
+        aux->proximo = novo;
+        novo->anterior = aux;
+    }
 }
-
-void ImprimeInformacoes(struct Lista *lista){
-    printf("Endereco anterior: %p\nEndereco atual: %p\nEndereco proximo: %p\n",lista->anterior,lista,lista->proximo);
+void inicializa(Lista *lista) {
+    lista->proximo = NULL;
+    lista->anterior = NULL;
 }
-
-void Imprime(struct Lista *lista) {
-    struct Lista *anterior, *proximo, *atual = lista;
-    while (atual->proximo != NULL) {
-        printf("Elemento: %d\n", atual->elemento);
-        anterior = atual->anterior;
-        atual = atual->proximo;
-        proximo = atual->proximo;
+void Imprime(Lista *lista) {
+    Lista *aux = lista;
+    while (aux != NULL) {
+        printf("%d\n", aux->elemento);
+        aux = aux->proximo;
     }
 }
 int main(void) {
-    struct Lista *listaTeste = malloc(sizeof(struct Lista));
-    Insere(listaTeste, 1);
-    Imprime(listaTeste);
+    Lista lista;
+    inicializa(&lista);
+    Insere(&lista, 12);
+    Insere(&lista, 13);
+    // printf("%d\n", lista.elemento);
+    Imprime(&lista);
 }
