@@ -41,7 +41,10 @@ void remocao(aluno *tabela[], int matricula){
 }
 
 void busca(aluno *aluno[], int matricula){
-    
+    int chave = hash(matricula);
+    if(aluno[chave]->matricula==matricula){
+        printf("%d %s %s\n",aluno[chave]->matricula,aluno[chave]->email,aluno[chave]->nome);
+    }
 }
 
 void imprimir(aluno *tabela[]) {
