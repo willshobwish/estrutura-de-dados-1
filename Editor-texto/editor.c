@@ -1,7 +1,9 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include<conio.h>
 
+#define MAX 2000
 struct strdim {
     char elemento;
     struct strdim *proximo;
@@ -63,6 +65,30 @@ bool string_igual(strdim *string1, strdim *string2) {
 int main(void) {
     strdim string;
     inicializa(&string);
+    char comando, insercao[MAX];
+    while (1) {
+        printf("Insira um comando: ");
+        scanf("%c", &comando);
+        setbuf(stdin, NULL);
+        switch (comando) {
+            case 'q':
+                return 0;
+                break;
+            case 'i':
+                system("cls");
+                fgets(insercao, MAX, stdin);
+                insere_palavra(&string, insercao);
+                // imprime(&string);
+                break;
+            case 'p':
+                imprime(&string);
+                break;
+            default:
+                printf("Coloque um comando valido: ");
+                break;
+        }
+    }
+
     insere_palavra(&string, "abelha");
     imprime(&string);
     return 0;
