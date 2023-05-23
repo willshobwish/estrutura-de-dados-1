@@ -7,11 +7,11 @@ struct strdim {
 };
 
 void adicionar(struct strdim *string, char elemento) {
-    struct strdim *auxiliar = string;
+    struct strdim *auxiliar = string,*novo=malloc(sizeof(struct strdim));
     while (auxiliar->prox != NULL) {
         auxiliar = auxiliar->prox;
     }
-    auxiliar->c = elemento;
+    novo->c = elemento;
     auxiliar->prox = malloc(sizeof(struct strdim));
     auxiliar = auxiliar->prox;
     auxiliar->prox = NULL;
@@ -34,6 +34,7 @@ void adicionarPalavra(struct strdim *string, char palavra[]){
 
 int main(void) {
     struct strdim string;
-    adicionarPalavra(&string,"tretse");
+    // adicionarPalavra(&string,"tretse");
+    adicionar(&string,'a');
     imprime(&string);
 }
