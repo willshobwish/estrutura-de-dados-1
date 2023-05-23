@@ -34,12 +34,20 @@ void imprimir(aluno *tabela) {
     }
 }
 
+aluno insere_informacoes(int matricula,char email[],char nome[]){
+    aluno novo;
+    novo.matricula = matricula;
+    strcpy(novo.email,email);
+    strcpy(novo.nome,nome);
+    return novo;
+}
 int main(void) {
     aluno tabHash[MAX], a;
     inicializa_tabela_hash(&tabHash);
-    a.matricula = 230;
-    strcpy(a.email, "teste@teste");
-    strcpy(a.nome, "teste");
-    inserir(&tabHash, a);
+    // a.matricula = 230;
+    // strcpy(a.email, "teste@teste");
+    // strcpy(a.nome, "teste");
+    
+    inserir(&tabHash, insere_informacoes(230,"email@teste.com","nome teste"));
     imprimir(&tabHash);
 }
