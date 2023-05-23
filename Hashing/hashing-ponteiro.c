@@ -8,6 +8,7 @@ struct aluno {
     char nome[80];
     char email[80];
 };
+
 typedef struct aluno aluno;
 
 int hash(int matricula) {
@@ -29,21 +30,21 @@ void inserir(aluno *tabela[], int matricula, char email[], char nome[]) {
     strcpy(auxiliar->nome, nome);
     tabela[chave] = auxiliar;
 }
-void remocao(aluno *tabela[], int matricula){
+void remocao(aluno *tabela[], int matricula) {
     int chave = hash(matricula);
     aluno *auxiliar = tabela[chave];
-    if(auxiliar->matricula==matricula){
+    if (auxiliar->matricula == matricula) {
         free(auxiliar);
-        tabela[chave]=NULL;
-    }else{
+        tabela[chave] = NULL;
+    } else {
         printf("Matricula nao existente\n");
     }
 }
 
-void busca(aluno *aluno[], int matricula){
+void busca(aluno *aluno[], int matricula) {
     int chave = hash(matricula);
-    if(aluno[chave]->matricula==matricula){
-        printf("%d %s %s\n",aluno[chave]->matricula,aluno[chave]->email,aluno[chave]->nome);
+    if (aluno[chave]->matricula == matricula) {
+        printf("%d %s %s\n", aluno[chave]->matricula, aluno[chave]->email, aluno[chave]->nome);
     }
 }
 
@@ -54,14 +55,15 @@ void imprimir(aluno *tabela[]) {
         } else {
             printf("%d --- Vazio\n", i);
         }
-    }printf("\n");
+    }
+    printf("\n");
 }
 int main(void) {
     aluno tabela[MAX];
     inicializar(&tabela);
-    inserir(&tabela,10,"teste@","teste");
+    inserir(&tabela, 10, "teste@", "teste");
     imprimir(&tabela);
-    remocao(&tabela,10);
+    remocao(&tabela, 10);
     imprimir(&tabela);
     return 0;
 }
