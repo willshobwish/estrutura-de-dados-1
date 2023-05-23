@@ -2,52 +2,51 @@
 #include <stdlib.h>
 
 struct caractere{
-    char letra;
-    
-}
+    char elemento;
+    struct caractere *proximo;
+    struct caractere *anterior;
+};
 
+struct string{
+    struct caractere *inicio;
+};
 
+typedef struct string string;
+typedef struct caractere caractere;
 
-void adicionar(struct strdim *string, char elemento) {
-    struct strdim *auxiliar = string, *novo;
-    novo = malloc(sizeof(struct strdim));
-    novo->c = elemento;
-    if (auxiliar == NULL) {
-        // auxiliar = malloc(sizeof(struct strdim));
-        auxiliar = novo;
-    } else {
-        while (auxiliar->prox != NULL) {
-            auxiliar = auxiliar->prox;
-        }
-    }
-    // auxiliar->prox = malloc(sizeof(struct strdim));
-    novo->prox=NULL;
-    auxiliar->prox = novo;
-}
-
-void imprime(struct strdim *string) {
-    struct strdim *auxiliar = string;
-    while (auxiliar->prox != NULL) {
-        printf("%c", auxiliar->c);
-        auxiliar = auxiliar->prox;
-    }
-}
-
-void adicionarPalavra(struct strdim *string, char palavra[]) {
-    for (int i = 0; i < sizeof(*palavra) / sizeof(char); i++) {
-        adicionar(string, palavra[i]);
-    }
-}
-void inicializar(struct strdim *string) {
+void inicializa(string *string){
     string = NULL;
 }
 
-int main(void) {
-    struct strdim string;
-    inicializar(&string);
-    // printf("%x\n",string);
-    adicionarPalavra(&string, "tretse");
-    // adicionar(&string, 'a');
-    // adicionar(&string, 'a');
-    imprime(&string);
+void adiciona(string *stringrecebido, char elemento){
+    caractere *auxiliar = stringrecebido->inicio,*anterior,*novo=malloc(sizeof(caractere));
+    while(auxiliar!=NULL){
+        anterior = auxiliar;
+        auxiliar = auxiliar->proximo;
+    }
+    novo->elemento = elemento;
+    novo->proximo = NULL;
+    novo->anterior = auxiliar;
+    auxiliar = novo;
+    auxiliar->elemento=elemento;
+    auxiliar->anterior = anterior;
+    anterior->proximo = auxiliar;
 }
+
+void imprime(string *stringrecebido){
+    caractere *auxiliar = stringrecebido->inicio;
+    while (auxiliar!=NULL)
+    {
+        printf("%c",auxiliar->elemento);
+        auxiliar = auxiliar->proximo;
+    }
+}
+
+int main(void){
+    string palavra;
+    inicializa(&palavra);
+    adiciona(&palavra,'a');
+    imprime(&palavra);
+    return 0;
+}
+
