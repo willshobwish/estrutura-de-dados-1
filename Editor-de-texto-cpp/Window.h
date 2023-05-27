@@ -14,10 +14,10 @@ namespace Project1 {
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class Windows : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		Windows(void)
 		{
 			InitializeComponent();
 			//
@@ -29,7 +29,7 @@ namespace Project1 {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~MyForm()
+		~Windows()
 		{
 			if (components)
 			{
@@ -70,7 +70,7 @@ namespace Project1 {
 			// 
 			// Editor
 			// 
-			this->Editor->Location = System::Drawing::Point(12, 12);
+			this->Editor->Location = System::Drawing::Point(12, 45);
 			this->Editor->Multiline = true;
 			this->Editor->Name = L"Editor";
 			this->Editor->ReadOnly = true;
@@ -81,53 +81,53 @@ namespace Project1 {
 			// Enviar
 			// 
 			this->Enviar->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->Enviar->Location = System::Drawing::Point(12, 212);
+			this->Enviar->Location = System::Drawing::Point(12, 245);
 			this->Enviar->Name = L"Enviar";
 			this->Enviar->Size = System::Drawing::Size(641, 61);
 			this->Enviar->TabIndex = 1;
 			this->Enviar->Text = L"Enviar";
 			this->Enviar->UseVisualStyleBackColor = true;
-			this->Enviar->Click += gcnew System::EventHandler(this, &MyForm::Enviar_Click);
+			this->Enviar->Click += gcnew System::EventHandler(this, &Windows::Enviar_Click);
 			// 
 			// TextoEnviar
 			// 
-			this->TextoEnviar->Location = System::Drawing::Point(12, 186);
+			this->TextoEnviar->Location = System::Drawing::Point(12, 219);
 			this->TextoEnviar->Name = L"TextoEnviar";
 			this->TextoEnviar->Size = System::Drawing::Size(641, 20);
 			this->TextoEnviar->TabIndex = 2;
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(12, 279);
+			this->button1->Location = System::Drawing::Point(12, 312);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(310, 23);
 			this->button1->TabIndex = 3;
 			this->button1->Text = L"Voltar";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &Windows::button1_Click);
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(328, 279);
+			this->button2->Location = System::Drawing::Point(328, 312);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(325, 23);
 			this->button2->TabIndex = 4;
 			this->button2->Text = L"Avançar";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// MyForm
+			// Windows
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(665, 333);
+			this->ClientSize = System::Drawing::Size(665, 392);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->TextoEnviar);
 			this->Controls->Add(this->Enviar);
 			this->Controls->Add(this->Editor);
-			this->Name = L"MyForm";
+			this->Name = L"Windows";
 			this->Text = L"Editor de texto";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->Load += gcnew System::EventHandler(this, &Windows::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

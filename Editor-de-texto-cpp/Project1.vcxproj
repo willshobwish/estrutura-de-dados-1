@@ -125,6 +125,9 @@
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Localizar.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Window.h">
       <FileType>CppForm</FileType>
     </ClInclude>
