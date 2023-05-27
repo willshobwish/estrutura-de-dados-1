@@ -41,11 +41,13 @@ namespace Project1 {
 
 	private: System::Windows::Forms::Button^ Enviar;
 	private: System::Windows::Forms::TextBox^ TextoEnviar;
+	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ button2;
 
 
 
 	protected:
-
+		String^ anterior;
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -62,6 +64,8 @@ namespace Project1 {
 			this->Editor = (gcnew System::Windows::Forms::TextBox());
 			this->Enviar = (gcnew System::Windows::Forms::Button());
 			this->TextoEnviar = (gcnew System::Windows::Forms::TextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Editor
@@ -92,11 +96,32 @@ namespace Project1 {
 			this->TextoEnviar->Size = System::Drawing::Size(641, 20);
 			this->TextoEnviar->TabIndex = 2;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(12, 279);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(310, 23);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"Voltar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(328, 279);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(325, 23);
+			this->button2->TabIndex = 4;
+			this->button2->Text = L"Avançar";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(665, 333);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->TextoEnviar);
 			this->Controls->Add(this->Enviar);
 			this->Controls->Add(this->Editor);
@@ -109,9 +134,13 @@ namespace Project1 {
 		}
 #pragma endregion
 	private: System::Void Enviar_Click(System::Object^ sender, System::EventArgs^ e) {
+		anterior = Editor->Text;
 		Editor->Text += TextoEnviar->Text;
 	}
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Editor->Text = anterior;
+	}
+};
 }
