@@ -1,5 +1,4 @@
 #include "Window.h"
-#include "Localizar.h"
 #include <string>
 
 using namespace System;
@@ -14,8 +13,5 @@ void main(){
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     Project1::Windows editor;
-    Project1::Localizar localizar;
     Application::Run(% editor);
-    Application::Run(% localizar);
-
 }
