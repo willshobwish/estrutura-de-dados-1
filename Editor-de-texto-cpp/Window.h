@@ -41,18 +41,26 @@ namespace Project1 {
 
 	private: System::Windows::Forms::Button^ Enviar;
 	private: System::Windows::Forms::TextBox^ TextoEnviar;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Button^ Voltar;
+	private: System::Windows::Forms::Button^ Avancar;
+
+
 
 
 
 	protected:
 		String^ anterior;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::TextBox^ TextoLocalizar;
+
+	private: System::Windows::Forms::Button^ Localizar;
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Button^ Apagar;
+	private: System::Windows::Forms::Button^ ApagarTudo;
+
+
 	protected:
 
 
@@ -76,13 +84,15 @@ namespace Project1 {
 			this->Editor = (gcnew System::Windows::Forms::TextBox());
 			this->Enviar = (gcnew System::Windows::Forms::Button());
 			this->TextoEnviar = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->Voltar = (gcnew System::Windows::Forms::Button());
+			this->Avancar = (gcnew System::Windows::Forms::Button());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->TextoLocalizar = (gcnew System::Windows::Forms::TextBox());
+			this->Localizar = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->Apagar = (gcnew System::Windows::Forms::Button());
+			this->ApagarTudo = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Editor
@@ -92,15 +102,15 @@ namespace Project1 {
 			this->Editor->Name = L"Editor";
 			this->Editor->ReadOnly = true;
 			this->Editor->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->Editor->Size = System::Drawing::Size(672, 168);
+			this->Editor->Size = System::Drawing::Size(600, 200);
 			this->Editor->TabIndex = 0;
 			// 
 			// Enviar
 			// 
 			this->Enviar->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->Enviar->Location = System::Drawing::Point(12, 225);
+			this->Enviar->Location = System::Drawing::Point(12, 257);
 			this->Enviar->Name = L"Enviar";
-			this->Enviar->Size = System::Drawing::Size(672, 61);
+			this->Enviar->Size = System::Drawing::Size(600, 30);
 			this->Enviar->TabIndex = 1;
 			this->Enviar->Text = L"Enviar";
 			this->Enviar->UseVisualStyleBackColor = true;
@@ -108,50 +118,50 @@ namespace Project1 {
 			// 
 			// TextoEnviar
 			// 
-			this->TextoEnviar->Location = System::Drawing::Point(12, 199);
+			this->TextoEnviar->Location = System::Drawing::Point(12, 231);
 			this->TextoEnviar->Name = L"TextoEnviar";
-			this->TextoEnviar->Size = System::Drawing::Size(672, 20);
+			this->TextoEnviar->Size = System::Drawing::Size(600, 20);
 			this->TextoEnviar->TabIndex = 2;
 			// 
-			// button1
+			// Voltar
 			// 
-			this->button1->Location = System::Drawing::Point(12, 292);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(672, 23);
-			this->button1->TabIndex = 3;
-			this->button1->Text = L"Voltar";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Windows::button1_Click);
+			this->Voltar->Location = System::Drawing::Point(12, 293);
+			this->Voltar->Name = L"Voltar";
+			this->Voltar->Size = System::Drawing::Size(300, 30);
+			this->Voltar->TabIndex = 3;
+			this->Voltar->Text = L"Voltar";
+			this->Voltar->UseVisualStyleBackColor = true;
+			this->Voltar->Click += gcnew System::EventHandler(this, &Windows::button1_Click);
 			// 
-			// button2
+			// Avancar
 			// 
-			this->button2->Location = System::Drawing::Point(12, 321);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(672, 23);
-			this->button2->TabIndex = 4;
-			this->button2->Text = L"Avançar";
-			this->button2->UseVisualStyleBackColor = true;
+			this->Avancar->Location = System::Drawing::Point(312, 293);
+			this->Avancar->Name = L"Avancar";
+			this->Avancar->Size = System::Drawing::Size(300, 30);
+			this->Avancar->TabIndex = 4;
+			this->Avancar->Text = L"Avançar";
+			this->Avancar->UseVisualStyleBackColor = true;
 			// 
 			// contextMenuStrip1
 			// 
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
 			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
 			// 
-			// textBox1
+			// TextoLocalizar
 			// 
-			this->textBox1->Location = System::Drawing::Point(12, 381);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(672, 20);
-			this->textBox1->TabIndex = 5;
+			this->TextoLocalizar->Location = System::Drawing::Point(12, 381);
+			this->TextoLocalizar->Name = L"TextoLocalizar";
+			this->TextoLocalizar->Size = System::Drawing::Size(600, 20);
+			this->TextoLocalizar->TabIndex = 5;
 			// 
-			// button3
+			// Localizar
 			// 
-			this->button3->Location = System::Drawing::Point(12, 407);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(672, 19);
-			this->button3->TabIndex = 6;
-			this->button3->Text = L"Localizar";
-			this->button3->UseVisualStyleBackColor = true;
+			this->Localizar->Location = System::Drawing::Point(12, 407);
+			this->Localizar->Name = L"Localizar";
+			this->Localizar->Size = System::Drawing::Size(600, 30);
+			this->Localizar->TabIndex = 6;
+			this->Localizar->Text = L"Localizar";
+			this->Localizar->UseVisualStyleBackColor = true;
 			// 
 			// label1
 			// 
@@ -171,17 +181,38 @@ namespace Project1 {
 			this->label2->TabIndex = 8;
 			this->label2->Text = L"Texto";
 			// 
+			// Apagar
+			// 
+			this->Apagar->Location = System::Drawing::Point(12, 329);
+			this->Apagar->Name = L"Apagar";
+			this->Apagar->Size = System::Drawing::Size(300, 30);
+			this->Apagar->TabIndex = 9;
+			this->Apagar->Text = L"Apagar";
+			this->Apagar->UseVisualStyleBackColor = true;
+			// 
+			// ApagarTudo
+			// 
+			this->ApagarTudo->Location = System::Drawing::Point(312, 329);
+			this->ApagarTudo->Name = L"ApagarTudo";
+			this->ApagarTudo->Size = System::Drawing::Size(300, 30);
+			this->ApagarTudo->TabIndex = 10;
+			this->ApagarTudo->Text = L"Apagar tudo";
+			this->ApagarTudo->UseVisualStyleBackColor = true;
+			this->ApagarTudo->Click += gcnew System::EventHandler(this, &Windows::button5_Click);
+			// 
 			// Windows
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(696, 436);
+			this->ClientSize = System::Drawing::Size(628, 449);
+			this->Controls->Add(this->ApagarTudo);
+			this->Controls->Add(this->Apagar);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->textBox1);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->Localizar);
+			this->Controls->Add(this->TextoLocalizar);
+			this->Controls->Add(this->Avancar);
+			this->Controls->Add(this->Voltar);
 			this->Controls->Add(this->TextoEnviar);
 			this->Controls->Add(this->Enviar);
 			this->Controls->Add(this->Editor);
@@ -203,5 +234,8 @@ namespace Project1 {
 		Editor->Text = anterior;
 	}
 
+private: System::Void button5_Click(System::Object^ sender, System::EventArgs^ e) {
+	Editor->Text = "";
+}
 };
 }
