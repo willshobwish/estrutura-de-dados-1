@@ -4,6 +4,8 @@
  */
 package controller;
 
+import model.StringDinamica;
+
 /**
  *
  * @author Willian
@@ -11,6 +13,7 @@ package controller;
 public class Controller {
 
     private static final Controller controller = new Controller();
+    private StringDinamica stringDinamica = new StringDinamica();
 
     private Controller() {
     }
