@@ -24,6 +24,12 @@ public class StringDinamica {
         }
     }
 
+    /**
+     *
+     * @param list
+     * @param data
+     * @return
+     */
     public static StringDinamica insert(StringDinamica list, char data) {
         // Create a new node with given data
         node new_node = new node(data);
@@ -48,6 +54,10 @@ public class StringDinamica {
         return list;
     }
 
+    /**
+     *
+     * @param list
+     */
     public static void printList(StringDinamica list) {
         node currnode = list.head;
 
