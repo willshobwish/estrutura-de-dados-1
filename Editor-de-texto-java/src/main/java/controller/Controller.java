@@ -13,7 +13,7 @@ import model.StringDinamica;
 public class Controller {
 
     private static final Controller controller = new Controller();
-    private StringDinamica stringDinamica = new StringDinamica();
+    private static StringDinamica stringDinamica = new StringDinamica();
 
     private Controller() {
     }
@@ -31,13 +31,17 @@ public class Controller {
         char[] caracteres = entrada.toCharArray();
 //        System.out.println("");
         for (char e : caracteres) {
-            System.out.print(e);
+            stringDinamica = stringDinamica.insert(stringDinamica, e);
         }
         if (espaco) {
-            System.out.print(" ");
+            stringDinamica = stringDinamica.insert(stringDinamica, ' ');
         }
         if (quebraDeLinha) {
-            System.out.println("");
+            stringDinamica = stringDinamica.insert(stringDinamica, '\n');
         }
+    }
+
+    public String imprime() {
+        return stringDinamica.getString(stringDinamica);
     }
 }

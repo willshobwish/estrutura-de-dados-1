@@ -5,6 +5,9 @@
 package view;
 
 import controller.Controller;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import javax.swing.JRootPane;
 import model.StringDinamica;
 
 /**
@@ -48,12 +51,18 @@ public class Main extends javax.swing.JFrame {
         setTitle("Editor de texto");
 
         TextEditor.setColumns(20);
+        TextEditor.setLineWrap(true);
         TextEditor.setRows(5);
         jScrollPane1.setViewportView(TextEditor);
 
         TextFieldEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldEditorActionPerformed(evt);
+            }
+        });
+        TextFieldEditor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextFieldEditorKeyPressed(evt);
             }
         });
 
@@ -173,7 +182,16 @@ public class Main extends javax.swing.JFrame {
     private void ButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInserirActionPerformed
         // TODO add your handling code here:
         Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), CheckQuebraDeLinha.isSelected());
+        TextEditor.setText(Controller.getInstance().imprime());
     }//GEN-LAST:event_ButtonInserirActionPerformed
+
+    private void TextFieldEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldEditorKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            ButtonInserirActionPerformed(null);
+        }
+//        TextEditor.setText(Controller.getInstance().imprime());
+    }//GEN-LAST:event_TextFieldEditorKeyPressed
 
     /**
      * @param args the command line arguments
@@ -221,7 +239,7 @@ public class Main extends javax.swing.JFrame {
         dinamica.insert(dinamica, 'c');
         dinamica.insert(dinamica, 'd');
         dinamica.insert(dinamica, 'e');
-        dinamica.printList(dinamica);
+        dinamica.getString(dinamica);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

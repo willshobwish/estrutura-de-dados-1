@@ -58,18 +58,19 @@ public class StringDinamica {
      *
      * @param list
      */
-    public static void printList(StringDinamica list) {
+    public static String getString(StringDinamica list) {
         node currnode = list.head;
 
-        System.out.print("LinkedList: ");
+        String dados = "";
 
         // Traverse through the LinkedList
         while (currnode != null) {
             // Print the data at current node
-            System.out.print(currnode.elemento + " ");
+            dados += currnode.elemento;
 
             // Go to proximo node
             currnode = currnode.proximo;
         }
+        return dados;
     }
 }
