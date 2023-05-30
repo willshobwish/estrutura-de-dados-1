@@ -34,11 +34,11 @@ public class Main extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        MenuArquivo = new javax.swing.JMenu();
+        ButtonLocalizar = new javax.swing.JMenuItem();
+        ButtonSair = new javax.swing.JMenuItem();
+        MenuSobre = new javax.swing.JMenu();
+        ButtonSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de texto");
@@ -57,37 +57,37 @@ public class Main extends javax.swing.JFrame {
 
         jButton2.setText("Apagar");
 
-        jMenu1.setText("Arquivo");
+        MenuArquivo.setText("Arquivo");
 
-        jMenuItem1.setText("Localizar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        ButtonLocalizar.setText("Localizar");
+        ButtonLocalizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                ButtonLocalizarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        MenuArquivo.add(ButtonLocalizar);
 
-        jMenuItem2.setText("Sair");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonSair.setText("Sair");
+        ButtonSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                ButtonSairActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        MenuArquivo.add(ButtonSair);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(MenuArquivo);
 
-        jMenu2.setText("Sobre");
+        MenuSobre.setText("Sobre");
 
-        jMenuItem3.setText("Sobre");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        ButtonSobre.setText("Sobre");
+        ButtonSobre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                ButtonSobreActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        MenuSobre.add(ButtonSobre);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(MenuSobre);
 
         setJMenuBar(jMenuBar1);
 
@@ -127,21 +127,21 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void ButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLocalizarActionPerformed
         // TODO add your handling code here:
         Localizar localizar = new Localizar();
         localizar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_ButtonLocalizarActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void ButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSairActionPerformed
         // TODO add your handling code here:
         dispose();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_ButtonSairActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void ButtonSobreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSobreActionPerformed
         // TODO add your handling code here:
         new Sobre().setVisible(true);
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_ButtonSobreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,14 +193,14 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ButtonLocalizar;
+    private javax.swing.JMenuItem ButtonSair;
+    private javax.swing.JMenuItem ButtonSobre;
+    private javax.swing.JMenu MenuArquivo;
+    private javax.swing.JMenu MenuSobre;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
