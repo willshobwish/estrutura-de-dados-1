@@ -29,11 +29,11 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        TextEditor = new javax.swing.JTextArea();
+        TextFieldEditor = new javax.swing.JTextField();
+        ButtonInserir = new javax.swing.JButton();
+        ButtonApagar = new javax.swing.JButton();
+        Menu = new javax.swing.JMenuBar();
         MenuArquivo = new javax.swing.JMenu();
         ButtonLocalizar = new javax.swing.JMenuItem();
         ButtonSair = new javax.swing.JMenuItem();
@@ -43,19 +43,19 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de texto");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        TextEditor.setColumns(20);
+        TextEditor.setRows(5);
+        jScrollPane1.setViewportView(TextEditor);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TextFieldEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TextFieldEditorActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Inserir");
+        ButtonInserir.setText("Inserir");
 
-        jButton2.setText("Apagar");
+        ButtonApagar.setText("Apagar");
 
         MenuArquivo.setText("Arquivo");
 
@@ -75,7 +75,7 @@ public class Main extends javax.swing.JFrame {
         });
         MenuArquivo.add(ButtonSair);
 
-        jMenuBar1.add(MenuArquivo);
+        Menu.add(MenuArquivo);
 
         MenuSobre.setText("Sobre");
 
@@ -87,9 +87,9 @@ public class Main extends javax.swing.JFrame {
         });
         MenuSobre.add(ButtonSobre);
 
-        jMenuBar1.add(MenuSobre);
+        Menu.add(MenuSobre);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(Menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,11 +98,11 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1)
+                    .addComponent(TextFieldEditor)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                        .addComponent(ButtonInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
+                        .addComponent(ButtonApagar, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
                 .addContainerGap())
         );
@@ -112,20 +112,20 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextFieldEditor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                    .addComponent(ButtonInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(ButtonApagar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TextFieldEditorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextFieldEditorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TextFieldEditorActionPerformed
 
     private void ButtonLocalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLocalizarActionPerformed
         // TODO add your handling code here:
@@ -193,16 +193,16 @@ public class Main extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonApagar;
+    private javax.swing.JButton ButtonInserir;
     private javax.swing.JMenuItem ButtonLocalizar;
     private javax.swing.JMenuItem ButtonSair;
     private javax.swing.JMenuItem ButtonSobre;
+    private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuArquivo;
     private javax.swing.JMenu MenuSobre;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JTextArea TextEditor;
+    private javax.swing.JTextField TextFieldEditor;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
