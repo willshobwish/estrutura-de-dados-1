@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.Controller;
 import model.StringDinamica;
 
 /**
@@ -33,6 +34,9 @@ public class Main extends javax.swing.JFrame {
         TextFieldEditor = new javax.swing.JTextField();
         ButtonInserir = new javax.swing.JButton();
         ButtonApagar = new javax.swing.JButton();
+        CheckInserirEspaco = new javax.swing.JCheckBox();
+        CheckQuebraDeLinha = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         MenuArquivo = new javax.swing.JMenu();
         ButtonLocalizar = new javax.swing.JMenuItem();
@@ -54,8 +58,19 @@ public class Main extends javax.swing.JFrame {
         });
 
         ButtonInserir.setText("Inserir");
+        ButtonInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonInserirActionPerformed(evt);
+            }
+        });
 
         ButtonApagar.setText("Apagar");
+
+        CheckInserirEspaco.setText("Inserir espaço");
+
+        CheckQuebraDeLinha.setText("Quebra de linha");
+
+        jLabel1.setText("Automatização");
 
         MenuArquivo.setText("Arquivo");
 
@@ -95,15 +110,21 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TextFieldEditor)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TextFieldEditor, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ButtonApagar, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(CheckInserirEspaco)
+                            .addComponent(CheckQuebraDeLinha))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,7 +138,13 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ButtonInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                     .addComponent(ButtonApagar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CheckInserirEspaco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CheckQuebraDeLinha)
+                .addContainerGap())
         );
 
         pack();
@@ -142,6 +169,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Sobre().setVisible(true);
     }//GEN-LAST:event_ButtonSobreActionPerformed
+
+    private void ButtonInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonInserirActionPerformed
+        // TODO add your handling code here:
+        Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), CheckQuebraDeLinha.isSelected());
+    }//GEN-LAST:event_ButtonInserirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,11 +230,14 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem ButtonLocalizar;
     private javax.swing.JMenuItem ButtonSair;
     private javax.swing.JMenuItem ButtonSobre;
+    private javax.swing.JCheckBox CheckInserirEspaco;
+    private javax.swing.JCheckBox CheckQuebraDeLinha;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuArquivo;
     private javax.swing.JMenu MenuSobre;
     private javax.swing.JTextArea TextEditor;
     private javax.swing.JTextField TextFieldEditor;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

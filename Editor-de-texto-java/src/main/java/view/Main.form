@@ -69,9 +69,9 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="TextFieldEditor" alignment="1" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="ButtonInserir" pref="291" max="32767" attributes="0"/>
@@ -79,6 +79,14 @@
                       <Component id="ButtonApagar" pref="291" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="CheckInserirEspaco" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="CheckQuebraDeLinha" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -96,7 +104,13 @@
                   <Component id="ButtonInserir" alignment="3" pref="50" max="32767" attributes="0"/>
                   <Component id="ButtonApagar" alignment="3" pref="50" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="CheckInserirEspaco" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="CheckQuebraDeLinha" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -126,10 +140,28 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Inserir"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonInserirActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ButtonApagar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Apagar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="CheckInserirEspaco">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Inserir espa&#xe7;o"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="CheckQuebraDeLinha">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quebra de linha"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Automatiza&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
   </SubComponents>
