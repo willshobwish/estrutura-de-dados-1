@@ -4,7 +4,6 @@ package test;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Willian Murayama
@@ -21,10 +20,20 @@ public class teste {
         this.elemento = elemento;
     }
 
+    public void remove() {
+        teste head = this;
+        teste auxiliar;
+        while (head.proximo != null) {
+            head = head.proximo;
+        }
+        head.anterior.proximo = null;
+    }
+
     public void insert(char data) {
         // Create a new node with given data
         teste new_node = new teste(data);
         teste auxiliar = this;
+        teste anterior = null;
         // If the Linked List is empty,
         // then make the new node as head
         if (proximo == null) {
@@ -34,10 +43,12 @@ public class teste {
             // and insert the new_node there
 //            node last = list.head;
             while (auxiliar.proximo != null) {
+                anterior = auxiliar;
                 auxiliar = auxiliar.proximo;
             }
 
             // Insert the new_node at last node
+            new_node.anterior = anterior;
             auxiliar.proximo = new_node;
         }
     }
