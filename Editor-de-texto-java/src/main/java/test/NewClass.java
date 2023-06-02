@@ -11,10 +11,12 @@ package test;
 public class NewClass {
 
     public static void main(String[] args) {
-        teste a = new teste('a');
-        a.insert('b');
-        a.getString();
-        a.remove();
-        a.getString();
+        StringDinamicaC a = new StringDinamicaC('a');
+        a.inserir('b');
+        a.inserir('c');
+
+        a.printString();
+        a.remover();
+        a.printString();
     }
 }
