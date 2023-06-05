@@ -50,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Editor de texto");
 
+        TextEditor.setEditable(false);
         TextEditor.setColumns(20);
         TextEditor.setLineWrap(true);
         TextEditor.setRows(5);
@@ -183,6 +184,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), CheckQuebraDeLinha.isSelected());
         TextEditor.setText(Controller.getInstance().imprime());
+        TextFieldEditor.setText("");
     }//GEN-LAST:event_ButtonInserirActionPerformed
 
     private void TextFieldEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldEditorKeyPressed

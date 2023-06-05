@@ -20,7 +20,7 @@
             <configuration>
               <archive>
                 <manifest>
-                  <mainClass>view.Window</mainClass>
+                  <mainClass>view.Main</mainClass>
                 </manifest>
               </archive>
             </configuration>
