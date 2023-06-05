@@ -10,6 +10,10 @@ package test;
  */
 public class NewClass {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         StringDinamicaC a = new StringDinamicaC('a');
         a.inserir('b');
