@@ -44,6 +44,7 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
     // Organizacao dos dados de forma crescente com base na prioridade
     struct nodeQueue *newNode, *aux, *anterior;
     newNode = malloc(sizeof(struct nodeQueue));
+    // Caso o malloc nao funcione, ele retornara null
     if (newNode == NULL)
     // Caso tenha erro na alocacao do no de forma dinamica
         printf("Fila Cheia!!!");
@@ -63,12 +64,17 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
         }
         // Caso tenha elemento no inicio
         if (aux != NULL) {
-            // Caso esse elemento seja o primeiro, ele nao possuira anterior
+            // Caso esse elemento precise ser colocado em primeiro, ele nao possuira anterior
             if (anterior == NULL) {
+                // O novo elemento aponta para o inicio da fila anterior
                 newNode->proximo = fila->inicio;
+                // O descritor aponta para o novo elemento
                 fila->inicio = newNode;
             } else {
+                // Caso tenha anterior, deve ser inserido no meio
+                // O proximo do novo elemento aponta para o auxiliar anterior
                 newNode->proximo = aux;
+                // 
                 anterior->proximo = newNode;
             }
         } else {
