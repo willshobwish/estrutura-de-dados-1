@@ -14,12 +14,19 @@ public class StringDinamicaC {
     private StringDinamicaC anterior;
     private char elemento;
 
+    /**
+     *
+     * @param elemento
+     */
     public StringDinamicaC(char elemento) {
         anterior = null;
         proximo = null;
         this.elemento = elemento;
     }
 
+    /**
+     *
+     */
     public void remover() {
         StringDinamicaC auxiliar = this;
         while (auxiliar.proximo != null) {
@@ -29,6 +36,10 @@ public class StringDinamicaC {
         auxiliar.anterior.proximo = null;
     }
 
+    /**
+     *
+     * @param data
+     */
     public void inserir(char data) {
         StringDinamicaC novo = new StringDinamicaC(data);
         StringDinamicaC auxiliar = this;
@@ -45,6 +56,9 @@ public class StringDinamicaC {
         }
     }
 
+    /**
+     *
+     */
     public void printString() {
         StringDinamicaC auxiliar = this;
 

@@ -57,6 +57,7 @@ public class StringDinamica {
     /**
      *
      * @param list
+     * @return 
      */
     public static String getString(StringDinamica list) {
         node currnode = list.head;
