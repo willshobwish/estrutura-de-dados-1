@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// tipoelem = int
+// Node ou no
 struct nodeQueue {
     int elemento;
     int prioridade;
@@ -19,7 +19,8 @@ void inicializacao(FilaPrioridade *fila) {
     fila->fim = NULL;
 }
 
-short vazia(FilaPrioridade *fila) {  // verifica se a fila está vazia
+short vazia(FilaPrioridade *fila) {
+    //Verifica se a fila está vazia
     if (fila->inicio == NULL)
         return 1;
     else

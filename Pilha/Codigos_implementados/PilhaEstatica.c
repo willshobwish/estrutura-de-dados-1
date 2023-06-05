@@ -8,19 +8,20 @@ typedef struct
 } Pilha;
 
 int inicializacao(Pilha *pilha) {
-    pilha->topo = 0;  // pilha vazia
+    // Define a pilha vazia
+    pilha->topo = 0;
 }
 
-short vazia(Pilha *pilha)  // verifica se a pilha está vazia
-{
+short vazia(Pilha *pilha){
+    // Verifica se a pilha esta vazia
     if (pilha->topo == 0)
         return 1;
     else
         return 0;
 }
 
-short cheia(Pilha *pilha)  // verifica se a pilha está cheia; MAX = 10
-{
+short cheia(Pilha *pilha){
+    // Verifica se a pilha esta cheia
     if (pilha->topo == MAX)
         return 1;
     else
@@ -28,6 +29,7 @@ short cheia(Pilha *pilha)  // verifica se a pilha está cheia; MAX = 10
 }
 
 void push(Pilha *pilha, int elemento) {
+    // Envia o elemento para a pilha
     if (cheia(pilha)) {
         printf("Pilha Cheia!!!");
     } else {
@@ -38,6 +40,7 @@ void push(Pilha *pilha, int elemento) {
 // A variável topo sendo inicializada com o valor 0, primeiro insere o elemento no topo e depois incrementa o valor do topo
 
 void pop(Pilha *pilha, int *elemento) {
+    // Remove o elemento do topo da pilha
     if (vazia(pilha)) {
         printf("Pilha Vazia - Não há elementos para desempilhar!!!");
     } else {
@@ -47,6 +50,7 @@ void pop(Pilha *pilha, int *elemento) {
 }
 
 void obterTopo(Pilha *pilha, int *elemento) {
+    // Obtem o topo da pilha
     if (vazia(pilha))
         printf("Pilha Vazia - Não há elementos para desempilhar!!!");
     else
