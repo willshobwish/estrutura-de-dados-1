@@ -27,7 +27,9 @@ short vazia(FilaPrioridade *fila) {  // verifica se a fila está vazia
 }
 
 // a código da função fila cheia pode ser inserido na função inserir
-short cheia(FilaPrioridade *fila) {  // a fila estará cheia quando não houver memória para ser alocada
+short cheia(FilaPrioridade *fila) { 
+    // a fila estará cheia quando não houver memória para ser alocada
+    // A unica delimitacao de uma estrutura dinamica eh a quantidade de memoria disponivel para alocacao dinamica
     struct nodeQueue *newNode;
     newNode = malloc(sizeof(struct nodeQueue));
     // malloc retorna null quando não houver memória disponível para alocação ou quando ocorrer algum erro durante a alocação - execução do malloc
@@ -38,10 +40,11 @@ short cheia(FilaPrioridade *fila) {  // a fila estará cheia quando não houver 
 }
 
 void inserir(FilaPrioridade *fila, int elemento, int prioridade) { 
-    // Inserção ordenada de forma crescente
+    // Organizacao dos dados de forma crescente com base na prioridade
     struct nodeQueue *newNode, *aux, *anterior;
     newNode = malloc(sizeof(struct nodeQueue));
     if (newNode == NULL)
+    // Caso tenha erro na alocacao do no de forma dinamica
         printf("Fila Cheia!!!");
     else {
         newNode->proximo = NULL;
@@ -61,7 +64,6 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
         if (aux != NULL) {
             // Caso esse elemento seja o primeiro, ele nao possuira anterior
             if (anterior == NULL) {
-                
                 newNode->proximo = fila->inicio;
                 fila->inicio = newNode;
             } else {
@@ -69,11 +71,16 @@ void inserir(FilaPrioridade *fila, int elemento, int prioridade) {
                 anterior->proximo = newNode;
             }
         } else {
-            // Caso a fila seja vazia
+            // Caso ele seja inserido no inicio
+            // Porque nao possui anterior
             if (anterior == NULL)  
+            // O inicio do descritor aponta para o novo elemento
                 fila->inicio = newNode;
             else 
+            // Caso ele seja inserido no final
+            // O elemento do fim do descritor aponta o proximo para o novo elemento
                 fila->fim->proximo = newNode;
+            // Em todo caso o fim aponta para o novo elemento
             fila->fim = newNode;
         }
     }
