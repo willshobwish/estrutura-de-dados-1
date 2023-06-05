@@ -37,11 +37,14 @@ public class Main extends javax.swing.JFrame {
         TextFieldEditor = new javax.swing.JTextField();
         ButtonInserir = new javax.swing.JButton();
         ButtonApagar = new javax.swing.JButton();
-        CheckInserirEspaco = new javax.swing.JCheckBox();
-        CheckQuebraDeLinha = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        CheckInserirEspaco = new javax.swing.JCheckBox();
+        CheckQuebraDeLinha = new javax.swing.JCheckBox();
+        jPanel2 = new javax.swing.JPanel();
+        CheckQuebraLinhaEnter = new javax.swing.JCheckBox();
         Menu = new javax.swing.JMenuBar();
         MenuArquivo = new javax.swing.JMenu();
         ButtonLocalizar = new javax.swing.JMenuItem();
@@ -79,15 +82,61 @@ public class Main extends javax.swing.JFrame {
 
         ButtonApagar.setText("Apagar");
 
-        CheckInserirEspaco.setText("Inserir espaço");
-
-        CheckQuebraDeLinha.setText("Quebra de linha");
-
         jLabel1.setText("Automatização");
 
         jLabel2.setText("Texto para inserir (aperte enter para inserir o texto)");
 
         jLabel3.setText("Texto");
+
+        CheckInserirEspaco.setText("Inserir espaço");
+
+        CheckQuebraDeLinha.setText("Quebra de linha");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckInserirEspaco)
+                    .addComponent(CheckQuebraDeLinha))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CheckInserirEspaco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CheckQuebraDeLinha)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        CheckQuebraLinhaEnter.setSelected(true);
+        CheckQuebraLinhaEnter.setText("Enter adiciona quebra de linha");
+        CheckQuebraLinhaEnter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckQuebraLinhaEnterActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CheckQuebraLinhaEnter)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(CheckQuebraLinhaEnter)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
 
         MenuArquivo.setText("Arquivo");
 
@@ -140,10 +189,12 @@ public class Main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
-                            .addComponent(CheckInserirEspaco)
-                            .addComponent(CheckQuebraDeLinha)
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 262, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -164,9 +215,9 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CheckInserirEspaco)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CheckQuebraDeLinha)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -203,13 +254,17 @@ public class Main extends javax.swing.JFrame {
     private void TextFieldEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldEditorKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), true);
+            Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), CheckQuebraLinhaEnter.isSelected());
             TextEditor.setText(Controller.getInstance().imprime());
             TextFieldEditor.setText("");
 
         }
 //        TextEditor.setText(Controller.getInstance().imprime());
     }//GEN-LAST:event_TextFieldEditorKeyPressed
+
+    private void CheckQuebraLinhaEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckQuebraLinhaEnterActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckQuebraLinhaEnterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +323,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem ButtonSobre;
     private javax.swing.JCheckBox CheckInserirEspaco;
     private javax.swing.JCheckBox CheckQuebraDeLinha;
+    private javax.swing.JCheckBox CheckQuebraLinhaEnter;
     private javax.swing.JMenuBar Menu;
     private javax.swing.JMenu MenuArquivo;
     private javax.swing.JMenu MenuSobre;
@@ -276,6 +332,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
