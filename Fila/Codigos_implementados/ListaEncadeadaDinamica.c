@@ -1,25 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// tipoelem = int
+// Os nos que sao armazenados em fila
 struct noFila {
     int elemento;
     struct noFila *prox;
 };
 
-// Descritor
-typedef struct
-{
+// Descritor da fila
+typedef struct{
+    // Um no que aponta para o inicio
     struct noFila *inicio;
+    // Um no que aponta para o final da fila
     struct noFila *fim;
 } Fila;
 
 void inicializacao(Fila *fila) {
+    // O no que aponta para o inicio e final inicializados com null
     fila->inicio = NULL;
     fila->fim = NULL;
 }
 
-short vazia(Fila *fila) {  // verifica se a fila está vazia
+short vazia(Fila *fila) {  
+    // Verifica se a fila esta vazia
+    // Caso o ponteiro para o inicio seja null significa que esta vazio
     if (fila->inicio == NULL)
         return 1;
     else
@@ -39,28 +43,44 @@ short cheia(Fila *fila) {  // a fila estará cheia quando não houver memória p
 
 void inserir(Fila *fila, int elemento) {
     struct noFila *novoNo;
+    // Alocando espaco em memoria e devolvendo um ponteiro
     novoNo = malloc(sizeof(struct noFila));
+    // Caso o novo ponteiro seja null, isso quer dizer que a alocacao falhou
     if (novoNo == NULL)
         printf("Fila Cheia!!!");
+    // Caso contrario 
     else {
+        // Define o elemento para o novo ponteiro 
         novoNo->elemento = elemento;
+        // O novo ponteiro aponta para null
         novoNo->prox = NULL;
+        // Caso ao fila esteja vazia
         if (vazia(fila))
+        // E inserido no comeco sem a necessidade de apontar o final anterior para o novo
             fila->inicio = novoNo;
         else
+        // Caso ja possua elementos
+        // O final anterior aponta para o novo elemento
             fila->fim->prox = novoNo;
+        // Independente, o ponteiro para o final aponta para o novo elemento inserido
         fila->fim = novoNo;
     }
 }
 
 void remover(Fila *fila, int *elemento) {
+    // Utiliza o endereco do descritor e retorna por parametro o elemento removido
     struct noFila *aux;
+    // Checa se a fila possui elementos
     if (vazia(fila))
         printf("Fila Vazia - Não há elementos para remover!!!");
     else {
+        // Caso tenha elementos
+        // O auxiliar pega o endereco do inicio da fila atraves do descritor
         aux = fila->inicio;
         *elemento = aux->elemento;
+        // O inicio da fila eh o inicio da fila proxima
         fila->inicio = fila->inicio->prox;
+        // Liberacao do espaco alocado para o elemento anterior
         free(aux);
     }
 }
