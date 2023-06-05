@@ -30,8 +30,8 @@ public class Controller {
     public void converterString(String entrada, boolean espaco, boolean quebraDeLinha) {
         char[] caracteres = entrada.toCharArray();
 //        System.out.println("");
-        for (char e : caracteres) {
-            stringDinamica = stringDinamica.insert(stringDinamica, e);
+        for (int i = 0; i < caracteres.length; i++) {
+            stringDinamica = stringDinamica.insert(stringDinamica, caracteres[i]);
         }
         if (espaco) {
             stringDinamica = stringDinamica.insert(stringDinamica, ' ');
