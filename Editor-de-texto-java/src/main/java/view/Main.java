@@ -40,6 +40,8 @@ public class Main extends javax.swing.JFrame {
         CheckInserirEspaco = new javax.swing.JCheckBox();
         CheckQuebraDeLinha = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         Menu = new javax.swing.JMenuBar();
         MenuArquivo = new javax.swing.JMenu();
         ButtonLocalizar = new javax.swing.JMenuItem();
@@ -56,6 +58,7 @@ public class Main extends javax.swing.JFrame {
         TextEditor.setRows(5);
         jScrollPane1.setViewportView(TextEditor);
 
+        TextFieldEditor.setToolTipText("Aperte enter para inserir o texto");
         TextFieldEditor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextFieldEditorActionPerformed(evt);
@@ -81,6 +84,10 @@ public class Main extends javax.swing.JFrame {
         CheckQuebraDeLinha.setText("Quebra de linha");
 
         jLabel1.setText("Automatização");
+
+        jLabel2.setText("Texto para inserir (aperte enter para inserir o texto)");
+
+        jLabel3.setText("Texto");
 
         MenuArquivo.setText("Arquivo");
 
@@ -123,17 +130,19 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
                     .addComponent(TextFieldEditor, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonInserir, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(ButtonApagar, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addComponent(CheckInserirEspaco)
-                            .addComponent(CheckQuebraDeLinha))
+                            .addComponent(CheckQuebraDeLinha)
+                            .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -141,7 +150,11 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(TextFieldEditor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -190,7 +203,10 @@ public class Main extends javax.swing.JFrame {
     private void TextFieldEditorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldEditorKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            ButtonInserirActionPerformed(null);
+            Controller.getInstance().converterString(TextFieldEditor.getText(), CheckInserirEspaco.isSelected(), true);
+            TextEditor.setText(Controller.getInstance().imprime());
+            TextFieldEditor.setText("");
+
         }
 //        TextEditor.setText(Controller.getInstance().imprime());
     }//GEN-LAST:event_TextFieldEditorKeyPressed
@@ -258,6 +274,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextArea TextEditor;
     private javax.swing.JTextField TextFieldEditor;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
