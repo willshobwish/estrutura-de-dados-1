@@ -56,7 +56,6 @@ void obterTopo(Pilha *pilha, int *elemento) {
     else
         *elemento = pilha->vPilha[pilha->topo - 1];
 }
-// Retorna o elemento que está no topo da pilha
 
 int main(void) {
     Pilha P1;

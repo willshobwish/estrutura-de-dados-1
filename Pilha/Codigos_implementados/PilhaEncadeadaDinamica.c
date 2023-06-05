@@ -12,11 +12,12 @@ typedef struct Pilha {
 } Pilha;
 
 int inicializacao(Pilha *pilha) {
-    pilha->topo = NULL;  // pilha vazia
+    // Inicializa a pilha vazia
+    pilha->topo = NULL;
 }
 
-short vazia(Pilha *pilha)  // verifica se a pilha está vazia
-{
+short vazia(Pilha *pilha){
+// Verifica se a pilha esta vazia
     if (pilha->topo == NULL)
         return 1;
     else
