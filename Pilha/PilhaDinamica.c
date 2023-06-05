@@ -38,8 +38,11 @@ void Push(Pilha *pilha, int elemento) {
     if (newNode == NULL) {
         printf("Pilha cheia");
     } else {
+        // Atribuicao do valor do novo elemento
         newNode->elemento = elemento;
+        // Atribuicao do proximo elemento 
         newNode->prox = pilha->topo;
+        // O descritor aponta para o novo elemento
         pilha->topo = newNode;
     }
 }
