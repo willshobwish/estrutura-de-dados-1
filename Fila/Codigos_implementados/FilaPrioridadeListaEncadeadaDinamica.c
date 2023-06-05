@@ -37,7 +37,8 @@ short cheia(FilaPrioridade *fila) {  // a fila estará cheia quando não houver 
         return 0;
 }
 
-void inserir(FilaPrioridade *fila, int elemento, int prioridade) {  // inserção ordenada
+void inserir(FilaPrioridade *fila, int elemento, int prioridade) { 
+    // Inserção ordenada de forma crescente
     struct nodeQueue *newNode, *aux, *anterior;
     newNode = malloc(sizeof(struct nodeQueue));
     if (newNode == NULL)
