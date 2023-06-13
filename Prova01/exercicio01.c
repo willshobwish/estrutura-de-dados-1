@@ -17,7 +17,7 @@ void inicializa(strdim *string) {
 }
 
 void insere(strdim *string, char elemento) {
-    strdim *auxiliar = string, *novo = malloc(sizeof(strdim));
+    strdim *auxiliar = string, *novo =(strdim*) malloc(sizeof(strdim));
     novo->proximo = NULL;
     novo->elemento = elemento;
     while (auxiliar->proximo != NULL) {
