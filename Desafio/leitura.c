@@ -33,6 +33,5 @@ int main() {
         printf("\n ID: %s\n rodata: %s\n data: %s\n hora: %s\n mandante: %s\n visitante: %s\n formacao_mandante: %s\n formacao_visitante: %s\n tecnico_mandante: %s\n tecnico_visitante: %s\n vencedor: %s\n arena: %s\n mandante_Placar: %s\n visitante_Placar: %s\n mandante_Estado: %s\n visitante_Estado: %s", b.ID, b.rodata, b.data, b.hora, b.mandante, b.visitante, b.formacao_mandante, b.formacao_visitante, b.tecnico_mandante, b.tecnico_visitante, b.vencedor, b.arena, b.mandante_Placar, b.visitante_Placar, b.mandante_Estado, b.visitante_Estado);
         printf("\n--------------------------------------");
     }
-
     return 0;
 }

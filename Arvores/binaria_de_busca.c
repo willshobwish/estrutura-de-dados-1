@@ -70,7 +70,6 @@ void em_ordem(no *raiz) {
     if (raiz != NULL) {
         em_ordem(raiz->esquerda);
         printf("%d\n", raiz->elemento);
-
         em_ordem(raiz->direita);
     }
 }
